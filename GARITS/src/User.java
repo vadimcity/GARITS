@@ -1,13 +1,14 @@
 /*
-public class Userstring u
-       sername;
+public class User {
+   string username;
    string password;
    boolean loggedin;
 
    public User(boolean li, string un, string pw){
        loggedin = li;
        username = un;
-//    }
+       password = pw;
+   }
 
    public String login(){
    }
