@@ -10,15 +10,9 @@ public claobTss Foreperson extends Mechanic {
    }
 
 
-   public String createAccount(){
+   public String allocateMechanic(){
    }
-   public String deleteAccount(){
-   }
-   public String databaseRestore(){
-   }
-   public String databaseBackup(){
-   }
-   public String alterAccount(){
+   public String addJobToPendingList(){
    }
 
 }
