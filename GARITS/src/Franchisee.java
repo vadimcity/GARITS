@@ -10,15 +10,17 @@ public class Franchisee extends Foreperson {
    }
 
 
-   public String createAccount(){
+   public String setDiscountPlan(){
    }
-   public String deleteAccount(){
+   public String alterDiscountPlan(){
    }
-   public String databaseRestore(){
+   
+   public String createAccountHolder(){
    }
-   public String databaseBackup(){
+   public String payLateOption(){
    }
-   public String alterAccount(){
+   
+   public String alterAccountHolder(){
    }
 
 }
