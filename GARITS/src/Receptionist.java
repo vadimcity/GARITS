@@ -10,15 +10,22 @@ public class Receptionist extends User {
    }
 
 
-   public String createAccount(){
+   public String produceInvoice(){
    }
-   public String deleteAccount(){
+   
+   // public String stockAlertPopup ? () {}
+   
+   public String createCustomerRecord(){
    }
-   public String databaseRestore(){
+   public String takeInNewJobs(){
    }
-   public String databaseBackup(){
+   
+   public String monitorProgressJob(){
    }
-   public String alterAccount(){
+   public String setJob(){
    }
+   
+   // public String orderParts ? () {}
+   // public String sellSpareParts ? () {}
 }
 */
