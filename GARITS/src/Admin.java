@@ -3,8 +3,10 @@ public class Admin extends User {
    int x = 0;
 
    
-   public Admin(bool li){
+   public Admin(boolean li, string un, string pw){
      super.loggedin = li;
+     super.username = un;
+     super.password = pw;
    }
    
 
