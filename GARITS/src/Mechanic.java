@@ -12,14 +12,15 @@ public class Mechanic extends User {
 
    public String pickJob(){
    }
-   public String deleteAccount(){
+   public String changeDurationOfJob(){
    }
-   public String databaseRestore(){
+   
+   public String fillJobSheet(){
    }
-   public String databaseBackup(){
+   public String printTheJobSheet(){
    }
-   public String alterAccount(){
-   }
+   
+   // public String getParts ? () {}
 
 }
 */
