@@ -1,31 +1,27 @@
-/*
 public class Receptionist extends User {
-   int x = 0;
+    int x = 0;
 
 
-   public Admin(boolean li, string un, string pw){
-     super.loggedin = li;
-     super.username = un;
-     super.password = pw;
-   }
+    public Receptionist(String un, String pw){
+        super("Receptionist", un,pw);
+    }
 
 
-   public String produceInvoice(){
-   }
-   
-   // public String stockAlertPopup ? () {}
-   
-   public String createCustomerRecord(){
-   }
-   public String takeInNewJobs(){
-   }
-   
-   public String monitorProgressJob(){
-   }
-   public String setJob(){
-   }
-   
-   // public String orderParts ? () {}
-   // public String sellSpareParts ? () {}
+    public void produceInvoice(){
+    }
+
+    // public String stockAlertPopup ? () {}
+
+    public void createCustomerRecord(){
+    }
+    public void takeInNewJobs(){
+    }
+
+    public void monitorProgressJob(){
+    }
+    public void setJob(){
+    }
+
+    // public String orderParts ? () {}
+    // public String sellSpareParts ? () {}
 }
-*/
