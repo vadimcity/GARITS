@@ -1,25 +1,21 @@
-/*
 public class Admin extends User {
-   int x = 0;
+    int x = 0;
 
-   
-   public Admin(boolean li, string un, string pw){
-     super.loggedin = li;
-     super.username = un;
-     super.password = pw;
-   }
-   
 
-   public String createAccount(){
-   }
-   public String deleteAccount(){
-   }
-   public String databaseRestore(){
-   }
-   public String databaseBackup(){
-   }
-   public String alterAccount(){
-   }
+    public Admin(String un, String pw){
+        super("Admin", un,pw);
+    }
+
+
+    public void createAccount(){
+    }
+    public void deleteAccount(){
+    }
+    public void databaseRestore(){
+    }
+    public void databaseBackup(){
+    }
+    public void alterAccount(){
+    }
 
 }
-*/
