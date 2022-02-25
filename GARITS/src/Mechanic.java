@@ -1,26 +1,24 @@
-/*
 public class Mechanic extends User {
-   int x = 0;
+    int x = 0;
+
+    public Mechanic(String un, String pw){
+        super("Mechanic", un,pw);
+    }
+    public Mechanic(String role, String un, String pw){
+        super(role, un,pw);
+    }
 
 
-   public Admin(boolean li, string un, string pw){
-     super.loggedin = li;
-     super.username = un;
-     super.password = pw;
-   }
+    public void pickJob(){
+    }
+    public void changeDurationOfJob(){
+    }
 
+    public void fillJobSheet(){
+    }
+    public void printTheJobSheet(){
+    }
 
-   public String pickJob(){
-   }
-   public String changeDurationOfJob(){
-   }
-   
-   public String fillJobSheet(){
-   }
-   public String printTheJobSheet(){
-   }
-   
-   // public String getParts ? () {}
+    // public String getParts ? () {}
 
 }
-*/
