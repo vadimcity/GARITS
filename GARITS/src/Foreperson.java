@@ -1,19 +1,14 @@
-/*
 public class Foreperson extends Mechanic {
-   int x = 0;
+    int x = 0;
+
+    public Foreperson(String un, String pw){
+        super(un,pw);
+    }
 
 
-   public Admin(boolean li, string un, string pw){
-     super.loggedin = li;
-     super.username = un;
-     super.password = pw;
-   }
-
-
-   public String allocateMechanic(){
-   }
-   public String addJobToPendingList(){
-   }
+    public void allocateMechanic(){
+    }
+    public void addJobToPendingList(){
+    }
 
 }
-*/
