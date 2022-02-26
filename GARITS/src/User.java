@@ -1,4 +1,4 @@
-abstract public class User {
+public abstract class User {
     String role;
     String username;
     String password;
@@ -11,13 +11,18 @@ abstract public class User {
         loggedin = false;
     }
 
-    public boolean login(String role, String usn, String psw){
-        //connect to database, and check if role, username and password apply to anyone, if not, return false;
+    /*protected*/ public boolean login(String role, String usn, String psw){
+        String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + usn + "' AND Password='" + psw + "' AND Role=" + role + ") THEN 'TRUE' ELSE 'FALSE' END ";
+        /* if(DatabaseConnection.databaseReturnBool(sql)){
+            //bring user to the page for their role
+            return true;
+        } */
+
         loggedin = true;
         return false;
     }
     public void logout(){
-        //logout of system
+        //logout of system, i.e. bring user to login page
         loggedin = false;
     }
 
