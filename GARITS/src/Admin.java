@@ -13,7 +13,7 @@ public class Admin extends User {
         DatabaseConnection.databaseAffectTemplate(
                 "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')");
     }
-    /*private*/ public static void deleteAccount(String username){
+    /*private*/ public void deleteAccount(String username){
         DatabaseConnection.databaseAffectTemplate(
                 "DELETE FROM useraccounts WHERE username='" + username + "'");
     }
