@@ -1,31 +1,31 @@
-/*
 public class StockControlSystem {
-   int x = 0;
+    int stocktoolow;
 
-   public StockControlSystem(){
-   }
+    public StockControlSystem(int stl){
+        stocktoolow = stl;
+    }
 
 
-   public String stockAlertPopUp(){
-   }
-   public String orderMoreParts(){
-   }
+    public void stockAlertPopUp(){
+    }
+    public void orderMoreParts(){
+    }
 
-   public String orderParts(){
-   }
-   public String stockLevelReport(){
-   }
+    public void orderParts(){
+    }
+    public void stockLevelReport(){
+    }
 
-   public String selectPart(){
-   }
-   public String sellSpareParts(){
-   }
-   public String getParts(){
-   }
-   public String updateStockLevel(){
-   }
-   public String changePrice(){
-   }
+    public void selectPart(){
+    }
+    public void sellSpareParts(){
+    }
+    public void getParts(){
+    }
+    public void updateStockLevel(boolean b, int amount, String type){   //where true = increase in stock, false = decrease
+
+    }
+    public void changePrice(){
+    }
 
 }
-*/
