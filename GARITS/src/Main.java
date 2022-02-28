@@ -63,12 +63,12 @@ public class Main {
         DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + "1345" + "', '" + "Janet" + "', '" + "Jerome" + "', '" + "variable" + "')");
         DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + "1456" + "', '" + "Janine" + "', '" + "Jansen" + "', '" + "flexible" + "')");
     }
-    private static void fillPendingJobList(){                  //jobID, customerID, details                            allow for duration and mechanic to be null
+    private static void fillPendingJobList(){           //jobID, customerID, details                            allow for duration and mechanic to be null
         DatabaseConnection.databaseAffectTemplate("INSERT INTO pendingjoblist VALUES ('" + "9876" + "', '" + "1234" + "', '" + "NULL" + "')");
         DatabaseConnection.databaseAffectTemplate("INSERT INTO pendingjoblist VALUES ('" + "9765" + "', '" + "1345" + "', '" + "NULL" + "')");
         DatabaseConnection.databaseAffectTemplate("INSERT INTO pendingjoblist VALUES ('" + "9654" + "', '" + "1456" + "', '" + "NULL" + "')");
     }
-    private static void fillActiveJobList(){                  //jobID, customerID, duration, mechanic, details         allow for duration and mechanic to be null
+    private static void fillActiveJobList(){            //jobID, customerID, duration, mechanic, details         allow for duration and mechanic to be null
         DatabaseConnection.databaseAffectTemplate("INSERT INTO activejoblist VALUES ('" + "9543" + "', '" + "1567" + "', '" + "2:05" + "', '" + "John" + "', '" + "NULL" + "')");
         DatabaseConnection.databaseAffectTemplate("INSERT INTO activejoblist VALUES ('" + "9432" + "', '" + "1678" + "', '" + "2:05" + "', '" + "Joan" + "', '" + "NULL" + "')");
         DatabaseConnection.databaseAffectTemplate("INSERT INTO activejoblist VALUES ('" + "9321" + "', '" + "1789" + "', '" + "2:05" + "', '" + "John" + "', '" + "NULL" + "')");
