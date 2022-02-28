@@ -22,10 +22,34 @@ public class DatabaseConnection {
         }
     }
 
-    /*
+    
     //send a query to the database and get a boolean in return
-    public static boolean databaseReturnBool(String sql){ }
+    //public static boolean databaseReturnBool(String sql){ }
+    
+    //send a query to the database and get a boolean in return
+    //public static boolean databaseReturnBool(String sql){
+    public static void databaseReturnBool(){
+        String query = "SELECT * FROM useraccounts";
 
+        try (Connection conn = DriverManager.getConnection(database_url, mysqlUser, mysqlPassword);
+             PreparedStatement pst = conn.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+
+                System.out.print(rs.getInt(1));
+                System.out.print(": ");
+                System.out.println(rs.getString(2));
+            }
+
+        } catch (SQLException ex) {
+
+            Logger lgr = Logger.getLogger(DatabaseConnection.class.getName());
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        }
+    }
+
+    /*
     //send a query to the database and get a String in return
     public static String databaseReturnString(String sql){ }
     */
