@@ -1,3 +1,7 @@
+import DBConnect.DatabaseConnection;
+
+import java.util.ArrayList;
+
 public class Main {
     final static String[] roles = {"Admin", "Foreperson", "Franchisee", "Mechanic", "Receptionist"};
 
@@ -27,7 +31,7 @@ public class Main {
     }
     static boolean checkUsername(String un){
         /* String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + un + "') THEN 'TRUE' ELSE 'FALSE' END ";
-        if(DatabaseConnection.databaseReturnBool(sql)){ return true; } */
+        if(DBConnect.DatabaseConnection.databaseReturnBool(sql)){ return true; } */
         return false;
     }
 
@@ -77,15 +81,53 @@ public class Main {
         DatabaseConnection.databaseAffectTemplate("INSERT INTO spareparts VALUES ('" + "Door" + "', '" + "5" + "')");
     }
 
+    public static void printActiveJobList() {
+        ArrayList<Integer> al1 = DBConnect.DatabaseConnection.databaseReturnInt(
+                "SELECT * FROM activejoblist", "JobID");
+        ArrayList<Integer> al2 = DBConnect.DatabaseConnection.databaseReturnInt(
+                "SELECT * FROM activejoblist", "CustomerID");
+        ArrayList<String> al3 = DBConnect.DatabaseConnection.databaseReturnString(
+                "SELECT * FROM activejoblist", "Duration");
+        ArrayList<String> al4 = DBConnect.DatabaseConnection.databaseReturnString(
+                "SELECT * FROM activejoblist", "Mechanic");
+        ArrayList<String> al5 = DBConnect.DatabaseConnection.databaseReturnString(
+                "SELECT * FROM activejoblist", "Details");
+
+        for (int i = 0; i < al1.size(); i++) {
+            System.out.print(al1.get(i));
+            System.out.print("    ");
+            System.out.print(al2.get(i));
+            System.out.print("    ");
+            System.out.print(al3.get(i));
+            System.out.print("    ");
+            System.out.print(al4.get(i));
+            System.out.print("    ");
+            System.out.println(al5.get(i));
+        }
+    }
+
 
     public static void main(String[] args) {
         Admin a = new Admin("Sampson", "password");
+        //ArrayList<String> al = new ArrayList<String>();
 
         //emptyDatabase();
         //fillDatabase(a);
 
-        //DatabaseConnection.databaseReturnBool();                          COME BACK TO
+        //DBConnect.DatabaseConnection.databaseReturnBool();                          //COME BACK TO
+        //DBConnect.DatabaseConnection.databaseAffectTemplate("SELECT * FROM useraccounts WHERE Username='James'");
+        //DBConnect.DatabaseConnection.databaseReturnString(
+        //        "SELECT * FROM useraccounts WHERE Username='James'");
 
-        test(a);
+        /* ArrayList<String> als = DBConnect.DatabaseConnection.databaseReturnString(
+                "SELECT * FROM useraccounts", "Username");
+        ArrayList<Integer> ali = DBConnect.DatabaseConnection.databaseReturnInt(
+                "SELECT * FROM activejoblist", "JobID");
+        String str = null;
+        System.out.println(str); */
+
+        printActiveJobList();
+
+        //test(a);
     }
 }
