@@ -1,4 +1,6 @@
-public class Mechanic extends User {
+import UserSession.LoginSession;
+
+public class Mechanic extends LoginSession {
     int x = 0;
     StockControlSystem scs;
 

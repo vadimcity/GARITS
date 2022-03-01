@@ -1,10 +1,12 @@
-public abstract class User {
+package UserSession;
+
+public abstract class LoginSession {
     String role;
     String username;
     String password;
     boolean loggedin;
 
-    public User(String r, String un, String pw){
+    public LoginSession(String r, String un, String pw){
         role = r;
         username = un;
         password = pw;

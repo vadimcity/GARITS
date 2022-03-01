@@ -1,4 +1,6 @@
-public class Admin extends User {
+import UserSession.LoginSession;
+
+public class Admin extends LoginSession {
     int x = 0;
 
 

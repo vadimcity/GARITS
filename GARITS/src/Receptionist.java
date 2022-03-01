@@ -1,4 +1,6 @@
-public class Receptionist extends User {
+import UserSession.LoginSession;
+
+public class Receptionist extends LoginSession {
     int x = 0;
     StockControlSystem scs;
 

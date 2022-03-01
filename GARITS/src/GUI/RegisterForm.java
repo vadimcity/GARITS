@@ -9,6 +9,7 @@ public class RegisterForm {
     private JTextField textFieldAddress;
     private JButton submitButton;
     private JButton clearButton;
+    private JPanel registerPanel;
 
 
 }
