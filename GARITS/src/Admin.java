@@ -1,6 +1,4 @@
-import UserSession.LoginSession;
-
-public class Admin extends LoginSession {
+public class Admin extends User {
     int x = 0;
 
 
@@ -9,6 +7,10 @@ public class Admin extends LoginSession {
     }
 
     /*private*/ public void createAccount(String username, String password, String role){
+        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
+        String sql = "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')";
+        return sql; */
+
         if(!Main.checkRole(role)){ return; }              //should also output a popup saying "not a role", possibly replace with a dropdown menu
         //if(!Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
 

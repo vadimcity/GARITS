@@ -12,7 +12,12 @@ public class Foreperson extends Mechanic {
     public void allocateMechanic(int JobID, String Mechanic, String time){
         int CustID; String details;
         //first read info of JobID in pendingjoblist, and copy them to CustID and details.          So for now we'll initialise them ourselves
-        CustID = 1234; details = "NULL";
+
+        CustID = DatabaseConnection.databaseReturnIndivInt(
+                "SELECT * FROM pendingjoblist WHERE JobID=" + JobID, "CustomerID");
+        details = DatabaseConnection.databaseReturnIndivString(
+                "SELECT * FROM pendingjoblist WHERE JobID=" + JobID, "Details");
+
         DatabaseConnection.databaseAffectTemplate("DELETE FROM pendingjoblist WHERE JobID=" + JobID);
         DatabaseConnection.databaseAffectTemplate("INSERT INTO activejoblist VALUES ('" + JobID + "', '" + CustID + "', '" + time + "', '" + Mechanic + "', '" + details + "')");
     }

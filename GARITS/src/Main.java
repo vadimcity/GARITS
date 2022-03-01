@@ -1,5 +1,3 @@
-import DBConnect.DatabaseConnection;
-
 import java.util.ArrayList;
 
 public class Main {
@@ -10,6 +8,7 @@ public class Main {
 
         Admin a = ad;
         Foreperson fo = new Foreperson("Sampson", "password", scs);
+        fo.allocateMechanic(9876, "John", "01:30:00");
         Franchisee fr = new Franchisee("Sampson","password", scs);
         Mechanic m = new Mechanic("Sampson", "password", scs);
         Receptionist r = new Receptionist("Sampson", "password", scs);
@@ -31,7 +30,7 @@ public class Main {
     }
     static boolean checkUsername(String un){
         /* String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + un + "') THEN 'TRUE' ELSE 'FALSE' END ";
-        if(DBConnect.DatabaseConnection.databaseReturnBool(sql)){ return true; } */
+        if(DatabaseConnection.databaseReturnBool(sql)){ return true; } */
         return false;
     }
 
@@ -57,6 +56,7 @@ public class Main {
         a.createAccount("Jane","Jane123","Receptionist");
         a.createAccount("Robert","Rob123","Foreperson");
         a.createAccount("James","Jim123","Franchisee");
+        a.createAccount("Sampson","SonSam","Admin");
     }
     private static void fillCustomerMemberList(){       //ID, firstname, surname, discountplan
         DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + "1234" + "', '" + "Jack" + "', '" + "Johnson" + "', '" + "fixed" + "')");
@@ -82,15 +82,15 @@ public class Main {
     }
 
     public static void printActiveJobList() {
-        ArrayList<Integer> al1 = DBConnect.DatabaseConnection.databaseReturnInt(
+        ArrayList<Integer> al1 = DatabaseConnection.databaseReturnInt(
                 "SELECT * FROM activejoblist", "JobID");
-        ArrayList<Integer> al2 = DBConnect.DatabaseConnection.databaseReturnInt(
+        ArrayList<Integer> al2 = DatabaseConnection.databaseReturnInt(
                 "SELECT * FROM activejoblist", "CustomerID");
-        ArrayList<String> al3 = DBConnect.DatabaseConnection.databaseReturnString(
+        ArrayList<String> al3 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Duration");
-        ArrayList<String> al4 = DBConnect.DatabaseConnection.databaseReturnString(
+        ArrayList<String> al4 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Mechanic");
-        ArrayList<String> al5 = DBConnect.DatabaseConnection.databaseReturnString(
+        ArrayList<String> al5 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Details");
 
         for (int i = 0; i < al1.size(); i++) {
@@ -108,25 +108,29 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Admin a = new Admin("Sampson", "password");
+        Admin a = new Admin("Sampson", "SonSam");
         //ArrayList<String> al = new ArrayList<String>();
 
         //emptyDatabase();
-        //fillDatabase(a);
+        fillDatabase(a);
 
-        //DBConnect.DatabaseConnection.databaseReturnBool();                          //COME BACK TO
-        //DBConnect.DatabaseConnection.databaseAffectTemplate("SELECT * FROM useraccounts WHERE Username='James'");
-        //DBConnect.DatabaseConnection.databaseReturnString(
+        //DatabaseConnection.databaseReturnBool();                          //COME BACK TO
+        //DatabaseConnection.databaseAffectTemplate("SELECT * FROM useraccounts WHERE Username='James'");
+        //DatabaseConnection.databaseReturnString(
         //        "SELECT * FROM useraccounts WHERE Username='James'");
 
-        /* ArrayList<String> als = DBConnect.DatabaseConnection.databaseReturnString(
+        /* ArrayList<String> als = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM useraccounts", "Username");
-        ArrayList<Integer> ali = DBConnect.DatabaseConnection.databaseReturnInt(
+        ArrayList<Integer> ali = DatabaseConnection.databaseReturnInt(
                 "SELECT * FROM activejoblist", "JobID");
         String str = null;
         System.out.println(str); */
 
         printActiveJobList();
+
+        if(a.login("John", "John123")){
+            System.out.println("Main login success");
+        }
 
         //test(a);
     }
