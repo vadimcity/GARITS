@@ -46,11 +46,6 @@ public class RegisterForm extends JDialog{
     }
 
     private void submitForm() {
-
-
-
-
-
     }
 
     public static void main (String[] args){

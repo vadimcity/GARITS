@@ -1,23 +1,43 @@
-package Roles;
+package GUI;
 
 import DB.DatabaseConnection;
-import System.*;
 
-public class Admin extends User {
-    int x = 0;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+public class AdminPanel {
 
-    public Admin(String un, String pw){
-        super("Roles.Admin", un,pw);
+    private JButton deleteAccountButton;
+    private JTextField nameField;
+    private JTextField surnameField;
+    private JTextField emailField;
+    private JTable table1;
+    private JComboBox roleBox;
+    private JButton createUserButton;
+    private JButton deleteUserButton;
+
+    public AdminPanel() {
+        deleteAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        deleteUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     /*private*/ public void createAccount(String username, String password, String role){
-        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Roles.Mechanic')";
+        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
         String sql = "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')";
         return sql; */
 
-        if(!Main.checkRole(role)){ return; }              //should also output a popup saying "not a role", possibly replace with a dropdown menu
-        //if(!System.Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
+        //if(!Main.checkRole(role)){ return; }              //should also output a popup saying "not a role", possibly replace with a dropdown menu
+        //if(!Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
 
         DatabaseConnection.databaseAffectTemplate(
                 "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')");
@@ -39,5 +59,5 @@ public class Admin extends User {
         //bring up page allowing to change details of user account in database
         //should have 3 boxes that can be filled, for username, password and role
         //System should deal with it such that boxes can be left blank, but depending on the situation, filled boxes update the table
-    }
+    } 
 }
