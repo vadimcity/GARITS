@@ -59,5 +59,10 @@ public class AdminPanel {
         //bring up page allowing to change details of user account in database
         //should have 3 boxes that can be filled, for username, password and role
         //System should deal with it such that boxes can be left blank, but depending on the situation, filled boxes update the table
-    } 
+    }
+
+    public static void main(String[] args) {
+        AdminPanel AP = new AdminPanel();
+        AP.databaseBackup();
+    }
 }
