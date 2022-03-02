@@ -1,7 +1,7 @@
 package System;
 
 import DB.DatabaseConnection;
-import GUI.Login;
+import GUI.*;
 import Roles.*;
 
 import java.util.ArrayList;
@@ -61,12 +61,12 @@ public class Main {
         fillSpareParts();
     }
     private static void fillUserAccounts(Admin a){      //username, password, role
-        a.createAccount("John","John123","Roles.Mechanic");
-        a.createAccount("Joan","Joan123","Roles.Mechanic");
-        a.createAccount("Jane","Jane123","Roles.Receptionist");
-        a.createAccount("Robert","Rob123","Roles.Foreperson");
-        a.createAccount("James","Jim123","Roles.Franchisee");
-        a.createAccount("Sampson","SonSam","Roles.Admin");
+        a.createAccount("John","John123","Mechanic");
+        a.createAccount("Joan","Joan123","Mechanic");
+        a.createAccount("Jane","Jane123","Receptionist");
+        a.createAccount("Robert","Rob123","Foreperson");
+        a.createAccount("James","Jim123","Franchisee");
+        a.createAccount("Sampson","SonSam","Admin");
     }
     private static void fillCustomerMemberList(){       //ID, firstname, surname, discountplan
         DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + "1234" + "', '" + "Jack" + "', '" + "Johnson" + "', '" + "fixed" + "')");
@@ -99,7 +99,7 @@ public class Main {
         ArrayList<String> al3 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Duration");
         ArrayList<String> al4 = DatabaseConnection.databaseReturnString(
-                "SELECT * FROM activejoblist", "Roles.Mechanic");
+                "SELECT * FROM activejoblist", "Mechanic");
         ArrayList<String> al5 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Details");
 
@@ -147,6 +147,6 @@ public class Main {
     //actual intended functionality
     public static void main(String[] args) {
         dealWithDatabase();
-        Login myLogin = new Login (null);
+        //Login myLogin = new Login (null);
     }
 }
