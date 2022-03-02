@@ -147,6 +147,6 @@ public class Main {
     //actual intended functionality
     public static void main(String[] args) {
         dealWithDatabase();
-        //Login myLogin = new Login (null);
+        Login myLogin = new Login (null);
     }
 }
