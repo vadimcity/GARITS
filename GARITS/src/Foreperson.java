@@ -1,3 +1,5 @@
+import DB.DatabaseConnection;
+
 public class Foreperson extends Mechanic {
     int x = 0;
 

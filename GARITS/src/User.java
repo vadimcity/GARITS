@@ -1,3 +1,5 @@
+import DB.DatabaseConnection;
+
 import java.util.ArrayList;
 
 public abstract class User {
@@ -17,7 +19,7 @@ public abstract class User {
     //connect to database, and check if role, username and password apply to anyone, if not, return false;
     //current issue with getting databaseconnection class to get a boolean from database
 
-    //DatabaseConnection.databaseAffectTemplate(
+    //DB.DatabaseConnection.databaseAffectTemplate(
     //        "SELECT FROM useraccounts WHERE Username=" + usn + " AND Password=" + psw + " AND Role=" + role);
 
     //"SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Role='Mechanic') THEN 'TRUE' ELSE 'FALSE' END "
@@ -25,7 +27,7 @@ public abstract class User {
 
     //String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + usn + "' AND Password='" + psw + "' AND Role=" + role + ") THEN 'TRUE' ELSE 'FALSE' END ";
     //SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='John' AND Password='John123' AND Role='Mechanic') THEN 'TRUE' ELSE 'FALSE' END
-        /* if(DatabaseConnection.databaseReturnBool(sql)){
+        /* if(DB.DatabaseConnection.databaseReturnBool(sql)){
             //bring user to the page for their role
             return true;
         } */

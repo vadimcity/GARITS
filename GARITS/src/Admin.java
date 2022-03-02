@@ -1,3 +1,5 @@
+import DB.DatabaseConnection;
+
 public class Admin extends User {
     int x = 0;
 

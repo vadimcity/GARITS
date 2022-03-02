@@ -1,3 +1,5 @@
+import DB.DatabaseConnection;
+
 import java.util.ArrayList;
 
 public class Mechanic extends User {

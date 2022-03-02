@@ -1,3 +1,5 @@
+import DB.DatabaseConnection;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -30,7 +32,7 @@ public class Main {
     }
     static boolean checkUsername(String un){
         /* String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + un + "') THEN 'TRUE' ELSE 'FALSE' END ";
-        if(DatabaseConnection.databaseReturnBool(sql)){ return true; } */
+        if(DB.DatabaseConnection.databaseReturnBool(sql)){ return true; } */
         return false;
     }
 
@@ -114,14 +116,14 @@ public class Main {
         //emptyDatabase();
         fillDatabase(a);
 
-        //DatabaseConnection.databaseReturnBool();                          //COME BACK TO
-        //DatabaseConnection.databaseAffectTemplate("SELECT * FROM useraccounts WHERE Username='James'");
-        //DatabaseConnection.databaseReturnString(
+        //DB.DatabaseConnection.databaseReturnBool();                          //COME BACK TO
+        //DB.DatabaseConnection.databaseAffectTemplate("SELECT * FROM useraccounts WHERE Username='James'");
+        //DB.DatabaseConnection.databaseReturnString(
         //        "SELECT * FROM useraccounts WHERE Username='James'");
 
-        /* ArrayList<String> als = DatabaseConnection.databaseReturnString(
+        /* ArrayList<String> als = DB.DatabaseConnection.databaseReturnString(
                 "SELECT * FROM useraccounts", "Username");
-        ArrayList<Integer> ali = DatabaseConnection.databaseReturnInt(
+        ArrayList<Integer> ali = DB.DatabaseConnection.databaseReturnInt(
                 "SELECT * FROM activejoblist", "JobID");
         String str = null;
         System.out.println(str); */

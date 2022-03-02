@@ -1,3 +1,5 @@
+package DB;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -156,7 +158,7 @@ public class DatabaseConnection {
 
         } catch (SQLException ex) {
 
-            Logger lgr = Logger.getLogger(DatabaseConnection.class.getName());
+            Logger lgr = Logger.getLogger(DB.DatabaseConnection.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
         }
     } */

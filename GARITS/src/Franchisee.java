@@ -1,3 +1,5 @@
+import DB.DatabaseConnection;
+
 public class Franchisee extends Foreperson {
     int x = 0;
 
