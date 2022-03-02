@@ -35,9 +35,6 @@ public class Login extends JDialog {
     private void loginUser() {
 
         try {
-//            String userString = textField1.getText();
-//            String passwordString = passwordField1.getText();
-//            Statement stmt = con.createStatement();
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/t18database","root","jack123");
