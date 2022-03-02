@@ -1,10 +1,13 @@
+package Roles;
+
 import DB.DatabaseConnection;
+import System.*;
 
 public class Franchisee extends Foreperson {
     int x = 0;
 
     public Franchisee(String un, String pw, StockControlSystem scs){
-        super("Franchisee", un, pw, scs);
+        super("Roles.Franchisee", un, pw, scs);
     }
 
 

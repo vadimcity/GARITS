@@ -1,6 +1,7 @@
 package GUI;
 
 import DB.DatabaseConnection;
+import System.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +32,7 @@ public class Login extends JDialog {
         setVisible(true);
     }
 
-    private String loginUser() {
+    private void loginUser() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/t18database", "root", "jack123");
@@ -43,8 +44,7 @@ public class Login extends JDialog {
             sql = "SELECT * FROM useraccounts WHERE username=" + textField1.getText() + "AND password=" + passwordField1.getText();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Logging In");
-                return DatabaseConnection.databaseReturnIndivString(sql, "Role");
-
+                Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "Role"));
             } else {
                 JOptionPane.showMessageDialog(null, "Username or Password incorrect");
                 textField1.setText("");
@@ -56,8 +56,9 @@ public class Login extends JDialog {
         }
     }
 
-    public static void main (String[] args){
+
+    /* public static void main (String[] args){
         Login myLogin = new Login (null);
 
-    }
+    } */
 }

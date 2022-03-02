@@ -1,9 +1,17 @@
+package System;
+
 import DB.DatabaseConnection;
+import GUI.Login;
+import Roles.*;
 
 import java.util.ArrayList;
 
 public class Main {
-    final static String[] roles = {"Admin", "Foreperson", "Franchisee", "Mechanic", "Receptionist"};
+    final static String[] roles = {"Roles.Admin", "Roles.Foreperson", "Roles.Franchisee", "Roles.Mechanic", "Roles.Receptionist"};
+    private static String role;
+
+    public static void setRole(String rl){ role = rl; }
+    public static String getRole(){ return role; }
 
     public static void test(Admin ad){
         StockControlSystem scs = new StockControlSystem(100);
@@ -15,8 +23,8 @@ public class Main {
         Mechanic m = new Mechanic("Sampson", "password", scs);
         Receptionist r = new Receptionist("Sampson", "password", scs);
 
-        /* a.createAccount("John","John123","Mechanic");
-        a.createAccount("JSally","John123","Mechanic");
+        /* a.createAccount("John","John123","Roles.Mechanic");
+        a.createAccount("JSally","John123","Roles.Mechanic");
         a.deleteAccount("John"); */
 
         m.changeDurationOfJob(9543, 15, 36, 45);
@@ -24,7 +32,7 @@ public class Main {
         fr.setDiscountPlan("flexible", 1234);
     }
 
-    static boolean checkRole(String role){
+    public static boolean checkRole(String role){
         for (int i = 0; i < roles.length; i++) {
             if(role == roles[i]){ return true; }
         }
@@ -53,12 +61,12 @@ public class Main {
         fillSpareParts();
     }
     private static void fillUserAccounts(Admin a){      //username, password, role
-        a.createAccount("John","John123","Mechanic");
-        a.createAccount("Joan","Joan123","Mechanic");
-        a.createAccount("Jane","Jane123","Receptionist");
-        a.createAccount("Robert","Rob123","Foreperson");
-        a.createAccount("James","Jim123","Franchisee");
-        a.createAccount("Sampson","SonSam","Admin");
+        a.createAccount("John","John123","Roles.Mechanic");
+        a.createAccount("Joan","Joan123","Roles.Mechanic");
+        a.createAccount("Jane","Jane123","Roles.Receptionist");
+        a.createAccount("Robert","Rob123","Roles.Foreperson");
+        a.createAccount("James","Jim123","Roles.Franchisee");
+        a.createAccount("Sampson","SonSam","Roles.Admin");
     }
     private static void fillCustomerMemberList(){       //ID, firstname, surname, discountplan
         DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + "1234" + "', '" + "Jack" + "', '" + "Johnson" + "', '" + "fixed" + "')");
@@ -91,7 +99,7 @@ public class Main {
         ArrayList<String> al3 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Duration");
         ArrayList<String> al4 = DatabaseConnection.databaseReturnString(
-                "SELECT * FROM activejoblist", "Mechanic");
+                "SELECT * FROM activejoblist", "Roles.Mechanic");
         ArrayList<String> al5 = DatabaseConnection.databaseReturnString(
                 "SELECT * FROM activejoblist", "Details");
 
@@ -108,8 +116,7 @@ public class Main {
         }
     }
 
-
-    public static void main(String[] args) {
+    public static void dealWithDatabase() {
         Admin a = new Admin("Sampson", "SonSam");
         //ArrayList<String> al = new ArrayList<String>();
 
@@ -131,9 +138,15 @@ public class Main {
         printActiveJobList();
 
         if(a.login("John", "John123")){
-            System.out.println("Main login success");
+            System.out.println("System.Main login success");
         }
 
         //test(a);
+    }
+
+    //actual intended functionality
+    public static void main(String[] args) {
+        dealWithDatabase();
+        Login myLogin = new Login (null);
     }
 }

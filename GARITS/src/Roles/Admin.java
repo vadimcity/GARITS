@@ -1,20 +1,23 @@
+package Roles;
+
 import DB.DatabaseConnection;
+import System.*;
 
 public class Admin extends User {
     int x = 0;
 
 
     public Admin(String un, String pw){
-        super("Admin", un,pw);
+        super("Roles.Admin", un,pw);
     }
 
     /*private*/ public void createAccount(String username, String password, String role){
-        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
+        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Roles.Mechanic')";
         String sql = "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')";
         return sql; */
 
         if(!Main.checkRole(role)){ return; }              //should also output a popup saying "not a role", possibly replace with a dropdown menu
-        //if(!Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
+        //if(!System.Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
 
         DatabaseConnection.databaseAffectTemplate(
                 "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')");

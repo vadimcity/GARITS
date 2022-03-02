@@ -1,4 +1,7 @@
+package Roles;
+
 import DB.DatabaseConnection;
+import System.*;
 
 import java.util.ArrayList;
 
@@ -7,7 +10,7 @@ public class Mechanic extends User {
     StockControlSystem scs;
 
     public Mechanic(String un, String pw, StockControlSystem s){
-        super("Mechanic", un,pw);
+        super("Roles.Mechanic", un,pw);
         scs = s;
     }
     public Mechanic(String role, String un, String pw, StockControlSystem s){

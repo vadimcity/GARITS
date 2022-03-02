@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import java.io.*;
 
 //an example of a database query would be
-//String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
+//String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Roles.Mechanic')";
 
 public class DatabaseConnection {
     static final String database_url = "jdbc:mysql://localhost:3306/t18database";
@@ -42,7 +42,7 @@ public class DatabaseConnection {
         ) {
             // Execute a query
             System.out.println("Inserting records into the table...");
-            String sql = "INSERT INTO useraccounts VALUES ('Solomon', 'x123', 'Receptionist')";
+            String sql = "INSERT INTO useraccounts VALUES ('Solomon', 'x123', 'Roles.Receptionist')";
             stmt.executeUpdate(sql);
             System.out.println("Inserted records into the table...");
         } catch (SQLException e) {
@@ -167,7 +167,7 @@ public class DatabaseConnection {
     // Importing input output java files
 
     /*
-    // Main friver method
+    // System.Main friver method
     public static void databaseReturnBool(){
 
         // Assigning NULL to connection object

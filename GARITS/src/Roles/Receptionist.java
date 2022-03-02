@@ -1,4 +1,7 @@
+package Roles;
+
 import DB.DatabaseConnection;
+import System.*;
 
 import java.util.ArrayList;
 
@@ -7,7 +10,7 @@ public class Receptionist extends User {
 
 
     public Receptionist(String un, String pw, StockControlSystem s){
-        super("Receptionist", un,pw);
+        super("Roles.Receptionist", un,pw);
         scs = s;
     }
 

@@ -1,10 +1,13 @@
+package Roles;
+
 import DB.DatabaseConnection;
+import System.*;
 
 public class Foreperson extends Mechanic {
     int x = 0;
 
     public Foreperson(String un, String pw, StockControlSystem scs){
-        super("Foreperson", un,pw, scs);
+        super("Roles.Foreperson", un,pw, scs);
     }
     public Foreperson(String role, String un, String pw, StockControlSystem scs){
         super(role, un,pw, scs);

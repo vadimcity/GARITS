@@ -1,3 +1,5 @@
+package Roles;
+
 import DB.DatabaseConnection;
 
 import java.util.ArrayList;
@@ -22,11 +24,11 @@ public abstract class User {
     //DB.DatabaseConnection.databaseAffectTemplate(
     //        "SELECT FROM useraccounts WHERE Username=" + usn + " AND Password=" + psw + " AND Role=" + role);
 
-    //"SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Role='Mechanic') THEN 'TRUE' ELSE 'FALSE' END "
+    //"SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Role='Roles.Mechanic') THEN 'TRUE' ELSE 'FALSE' END "
 
 
     //String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + usn + "' AND Password='" + psw + "' AND Role=" + role + ") THEN 'TRUE' ELSE 'FALSE' END ";
-    //SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='John' AND Password='John123' AND Role='Mechanic') THEN 'TRUE' ELSE 'FALSE' END
+    //SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='John' AND Password='John123' AND Role='Roles.Mechanic') THEN 'TRUE' ELSE 'FALSE' END
         /* if(DB.DatabaseConnection.databaseReturnBool(sql)){
             //bring user to the page for their role
             return true;
