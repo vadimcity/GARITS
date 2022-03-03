@@ -1,8 +1,11 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AdminPanel {
+public class AdminPanel extends JDialog {
 
     private JButton deleteAccountButton;
     private JTextField nameField;
@@ -14,10 +17,22 @@ public class AdminPanel {
     private JButton alterUserAccountButton;
     private JPasswordField passwordField1;
     private JScrollBar scrollBar1;
+    private JPanel adminPanel;
 
-    public AdminPanel() {
-
+    public AdminPanel(JFrame parent) {
+        super(parent);
+        setTitle("Admin Panel");
+        setContentPane(adminPanel);
+        //setMinimumSize(new Dimension());
+        setModal(true);
+        setLocationRelativeTo(parent);
+        setVisible(true);
     }
+
+    public static void main(String[] args) {
+        AdminPanel AP = new AdminPanel(null);
+    }
+}
 
 //    /*private*/ public void createAccount(String username, String password, String role){
 //        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
@@ -53,4 +68,3 @@ public class AdminPanel {
 //        AdminPanel AP = new AdminPanel();
 //        AP.databaseBackup();
 //    }
-}
