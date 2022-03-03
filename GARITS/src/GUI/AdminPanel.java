@@ -23,7 +23,7 @@ public class AdminPanel extends JDialog {
         super(parent);
         setTitle("Admin Panel");
         setContentPane(adminPanel);
-        //setMinimumSize(new Dimension());
+        setMinimumSize(new Dimension(1000,400));
         setModal(true);
         setLocationRelativeTo(parent);
         setVisible(true);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.AdminPanel">
   <grid id="27dc6" binding="adminPanel" layout-manager="GridLayoutManager" row-count="5" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="40" left="40" bottom="40" right="40"/>
+    <margin top="12" left="40" bottom="40" right="40"/>
     <constraints>
       <xy x="20" y="20" width="1067" height="400"/>
     </constraints>
@@ -105,14 +105,16 @@
       <component id="418c" class="javax.swing.JTextField">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="66" height="30"/>
           </grid>
         </constraints>
         <properties/>
       </component>
       <component id="7586d" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="66" height="19"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Username"/>
