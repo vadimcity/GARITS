@@ -5,7 +5,7 @@ CREATE TABLE useraccounts(
     firstname VARCHAR(50),
     surname VARCHAR(50),
     user_password VARCHAR(50),
-    email VARCHAR (50),
+    email VARCHAR (50) NULL,
     user_role VARCHAR(50)
 );
 CREATE TABLE customermemberlist(
