@@ -29,7 +29,7 @@ public class Main {
 
         m.changeDurationOfJob(9543, 15, 36, 45);
 
-        fr.setDiscountPlan("flexible", 1234);
+        fr.setDiscountPlan(1234,"flexible");
     }
 
     public static boolean checkRole(String role){
