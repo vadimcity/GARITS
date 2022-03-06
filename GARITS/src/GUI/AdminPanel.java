@@ -1,18 +1,11 @@
 package GUI;
 
-import DB.DatabaseConnection;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.text.DefaultTextUI;
 import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
 
 public class AdminPanel extends JDialog {
 
     private JButton deleteAccountButton;
-    private JTextField nameField;
     private JTextField surnameField;
     private JComboBox roleBox;
     private JButton createUserButton;
@@ -22,6 +15,7 @@ public class AdminPanel extends JDialog {
     private JPanel adminPanel;
     private JTextField textField1;
     private JTable table1;
+    private JButton logoutButton;
 
     public AdminPanel(JFrame parent) {
         super(parent);
