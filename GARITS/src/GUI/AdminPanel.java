@@ -1,57 +1,76 @@
 package GUI;
 
+import DB.DatabaseConnection;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AdminPanel extends JDialog {
 
     private JButton deleteAccountButton;
-    private JTextField surnameField;
     private JComboBox roleBox;
     private JButton createUserButton;
     private JButton deleteUserButton;
     private JButton alterUserAccountButton;
-    private JPasswordField passwordField1;
     private JPanel adminPanel;
-    private JTextField textField1;
+    private JTextField textFieldUsername;
+    private JTextField textFieldEmail;
+    private JPasswordField passwordField;
     private JTable table1;
     private JButton logoutButton;
 
-    public AdminPanel(JFrame parent) {
-        super(parent);
+    public AdminPanel() {
+//        super(parent);
         setTitle("Admin Panel");
         setContentPane(adminPanel);
         setMinimumSize(new Dimension(430, 220));
         setModal(true);
-        setLocationRelativeTo(parent);
+//        setLocationRelativeTo(parent);
 
-        String[] colName = {"Username", "Firstname", "Surname", "Role"};
-        Object[][] data = new Object[][] {{1, "John", 40.0, false },{2, "Rambo", 70.0, false },{3, "Zorro", 60.0, true }};
-        table1 = new JTable(data, colName);
-        //add the table to the frame
-        add(new JScrollPane(table1));
-        setTitle("Table Example");
-        pack();
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                dispose();
+                Login login = new Login();
+            }
+        });
+        createUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                createAccount(textFieldUsername.getText(), passwordField.getPassword(), roleBox.getSelectedItem());
+                JOptionPane.showMessageDialog(null, "Sending Account Details...");
+            }
+        });
+        alterUserAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JOptionPane.showMessageDialog(null, "Altering Account Details...");
+            }
+        });
         setVisible(true);
-
     }
 
     public static void main(String[] args) {
-        AdminPanel AP = new AdminPanel(null);
+//        AdminPanel AP = new AdminPanel();
+    }
+
+
+    public void createAccount(String username, char[] password, Object role) {
+//        String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
+//        String sql = "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')";
+//        return sql;
+
+        //if(!Main.checkRole(role)){ return; }              //should also output a popup saying "not a role", possibly replace with a dropdown menu
+        //if(!Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
+
+        System.out.println("About to send.");
+        DatabaseConnection.databaseAffectTemplate(
+                "INSERT INTO useraccounts VALUES ('" + username + "', NULL, NULL, '" + password + "', NULL,  '" + role + "')");
+        System.out.println("Sent.");
     }
 }
-
-//    /*private*/ public void createAccount(String username, String password, String role){
-//        /* String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
-//        String sql = "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')";
-//        return sql; */
-//
-//        //if(!Main.checkRole(role)){ return; }              //should also output a popup saying "not a role", possibly replace with a dropdown menu
-//        //if(!Main.checkUsername(username)){ return; }      //should also output a popup saying "username already in use"
-//
-//        DatabaseConnection.databaseAffectTemplate(
-//                "INSERT INTO useraccounts VALUES ('" + username + "', '" + password + "', '" + role + "')");
-//    }
 //    /*private*/ public void deleteAccount(String username){
 //        DatabaseConnection.databaseAffectTemplate(
 //                "DELETE FROM useraccounts WHERE username='" + username + "'");

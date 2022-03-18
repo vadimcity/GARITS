@@ -13,7 +13,7 @@ import java.io.*;
 //String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Roles.Mechanic')";
 
 public class DatabaseConnection {
-    static final String database_url = "jdbc:mysql://localhost:3306/t18database";
+    static final String database_url = "jdbc:mysql://localhost:3308/t18database";
     static final String mysqlUser = "root";
     static final String mysqlPassword = "jack123";
 

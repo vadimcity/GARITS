@@ -1,8 +1,9 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class MachanicPanel {
+public class MechanicPanel extends JDialog {
     private JButton backButton;
     private JButton logOutButton;
     private JTextField jobIDTextField;
@@ -17,4 +18,14 @@ public class MachanicPanel {
     private JTable table1;
     private JButton pickNewJobButton;
     private JButton fillJobSheetButton;
+    private JPanel mechanicPanel;
+
+
+    public MechanicPanel() {
+//        super(parent);
+        setTitle("Mechanic");
+        setContentPane(mechanicPanel);
+        setMinimumSize(new Dimension(430, 220));
+        setModal(true);
+    }
 }
