@@ -36,14 +36,14 @@
           <text value="JobID"/>
         </properties>
       </component>
-      <component id="6d817" class="javax.swing.JTextField" binding="customerIDTextField" default-binding="true">
+      <component id="6d817" class="javax.swing.JTextField" binding="vehicleIDTextField">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="CustomerID"/>
+          <text value="VehicleID"/>
         </properties>
       </component>
       <component id="cd8cb" class="javax.swing.JTextField" binding="detailsTextField" default-binding="true">
@@ -56,12 +56,12 @@
           <text value="Details"/>
         </properties>
       </component>
-      <component id="367ce" class="javax.swing.JButton" binding="addToPendingJopbButton" default-binding="true">
+      <component id="367ce" class="javax.swing.JButton" binding="addToPendingJobButton" default-binding="true">
         <constraints>
           <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Add To Pending Jopb List"/>
+          <text value="Add To Pending Job List"/>
         </properties>
       </component>
       <component id="8eeca" class="javax.swing.JButton" binding="produceInvoiceButton" default-binding="true">
