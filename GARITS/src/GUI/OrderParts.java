@@ -10,6 +10,7 @@ public class OrderParts  extends JDialog{
     private JTextField textField1;
     private JButton searchButton;
     private JPanel partsPanel;
+    private JButton logOutButton;
 
     public OrderParts (JFrame parent) {
         super(parent);

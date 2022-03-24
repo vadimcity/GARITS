@@ -16,13 +16,13 @@ public class Login extends JDialog {
     private JButton loginButton;
     private JPanel loginPanel;
 
-    public Login(JFrame parent) {
-        super(parent);
+    public Login() {
+//        super(parent);
         setTitle("Login");
         setContentPane(loginPanel);
         setMinimumSize(new Dimension(430, 220));
         setModal(true);
-        setLocationRelativeTo(parent);
+//        setLocationRelativeTo(parent);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,17 +34,19 @@ public class Login extends JDialog {
 
     private void loginUser() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/t18database", "root", "jack123");
-            String sql = "SELECT * FROM userAccounts WHERE username=? AND password=? ";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3308/t18database", "root", "jack123");
+            String sql = "SELECT * FROM useraccounts WHERE username=? AND password=? ";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, textField1.getText());
+            pst.setString(1,  textField1.getText());
             pst.setString(2, passwordField1.getText());
             ResultSet rs = pst.executeQuery();
-            sql = "SELECT * FROM useraccounts WHERE username=" + textField1.getText() + "AND password=" + passwordField1.getText();
+            sql = "SELECT * FROM useraccounts WHERE username=" + textField1.getText() + "AND password=" + passwordField1.getPassword();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Logging In");
-                Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "Role"));
+                Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
+                this.dispose();
+//                Main.newpanel();
+                AdminPanel AP = new AdminPanel();
             } else {
                 JOptionPane.showMessageDialog(null, "Username or Password incorrect");
                 textField1.setText("");
@@ -55,7 +57,6 @@ public class Login extends JDialog {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
 
     /* public static void main (String[] args){
         Login myLogin = new Login (null);

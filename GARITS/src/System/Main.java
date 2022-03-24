@@ -13,6 +13,15 @@ public class Main {
     public static void setRole(String rl){ role = rl; }
     public static String getRole(){ return role; }
 
+    public static void newpanel(){
+        String role = getRole();
+        if (role.equals("Admin")){
+            AdminPanel ap = new AdminPanel();
+        }else if (role == "Mechanic"){
+            MechanicPanel mp = new MechanicPanel();
+        }
+    }
+
     public static void test(Admin ad){
         StockControlSystem scs = new StockControlSystem(100);
 
@@ -146,7 +155,8 @@ public class Main {
 
     //actual intended functionality
     public static void main(String[] args) {
-        dealWithDatabase();
-        Login myLogin = new Login (null);
+//        dealWithDatabase();
+          Login myLogin = new Login ();
+//        AdminPanel AP = new AdminPanel(null);
     }
 }
