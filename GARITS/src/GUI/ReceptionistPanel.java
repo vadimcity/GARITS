@@ -29,7 +29,7 @@ public class ReceptionistPanel extends JDialog{
 //        super(parent);
         setTitle("ReceptionistPanel");
         setContentPane(receptionistPanel);
-        setMinimumSize(new Dimension(430, 220));
+        setMinimumSize(new Dimension(1290, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
         addToPendingJobButton.addActionListener(new ActionListener() {
