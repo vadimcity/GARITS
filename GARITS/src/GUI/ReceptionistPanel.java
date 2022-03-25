@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import java.nio.channels.ClosedSelectorException;
+import java.sql.*;
+
 public class ReceptionistPanel extends JDialog{
     private JButton backButton;
     private JButton logOutButton;
@@ -22,16 +25,17 @@ public class ReceptionistPanel extends JDialog{
     private JButton createButton;
     private JComboBox comboBox1;
 
-    private JPanel receptionistPanel;
+    private JFrame frame;
+    private JPanel receptpanel;
 
     private StockControlSystem scs;
 
     public ReceptionistPanel() {
 //        super(parent);
         setTitle("ReceptionistPanel");
-        setContentPane(receptionistPanel);
+        setContentPane(receptpanel);
         setMinimumSize(new Dimension(430, 220));
-        setModal(true);
+        //setModal(true);
 //        setLocationRelativeTo(parent);
         addToPendingJobButton.addActionListener(new ActionListener() {
             @Override
