@@ -1,5 +1,6 @@
 package System;
 
+import DB.BackupUI;
 import DB.DatabaseConnection;
 import GUI.*;
 import Roles.*;
@@ -156,8 +157,9 @@ public class Main {
     //actual intended functionality
     public static void main(String[] args) {
 //        dealWithDatabase();
-          Login myLogin = new Login ();
+//          Login myLogin = new Login ();
 //          ReceptionistPanel myrp = new ReceptionistPanel();
 //        AdminPanel AP = new AdminPanel(null);
+        BackupUI backupUI = new BackupUI ();
     }
 }

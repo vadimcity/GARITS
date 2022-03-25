@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class AdminPanel extends JDialog {
 
@@ -20,6 +21,7 @@ public class AdminPanel extends JDialog {
     private JPasswordField passwordField;
     private JTable table1;
     private JButton logoutButton;
+    private JButton backupButton;
 
     public AdminPanel() {
 //        super(parent);
@@ -50,6 +52,17 @@ public class AdminPanel extends JDialog {
             }
         });
         setVisible(true);
+        backupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    Process process = Runtime.getRuntime().exec(
+                            "mkdir backup");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {

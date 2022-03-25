@@ -21,7 +21,6 @@ public class ReceptionistPanel extends JDialog{
     private JTextField addressTextField;
     private JButton createButton;
     private JComboBox comboBox1;
-
     private JPanel receptionistPanel;
 
     private StockControlSystem scs;
