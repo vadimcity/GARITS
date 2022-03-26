@@ -26,6 +26,8 @@ public class ReceptionistPanel extends JDialog{
     private StockControlSystem scs;
 
     public ReceptionistPanel() {
+        //testIDslot();
+
 //        super(parent);
         setTitle("ReceptionistPanel");
         setContentPane(receptionistPanel);
@@ -41,6 +43,11 @@ public class ReceptionistPanel extends JDialog{
         setVisible(true);
     }
 
+    public void testIDslot(){
+        ArrayList<Integer> al = new ArrayList<>();
+        al.add(0); al.add(1); al.add(2); al.add(3); al.add(4); al.add(5);
+        System.out.println(IDSlotIn(al, 0));
+    }
 
 
     public void produceInvoice(){
@@ -64,12 +71,14 @@ public class ReceptionistPanel extends JDialog{
         //ArrayList<Integer> alpending = DatabaseConnection.databaseReturnInt("SELECT * FROM pendingjoblist", "CustomerID");
         //ArrayList<Integer> alactive = DatabaseConnection.databaseReturnInt("SELECT * FROM activejoblist", "CustomerID");
         //alpending.addAll(alactive);
-        ArrayList<Integer> al = DatabaseConnection.databaseReturnInt("SELECT * FROM joblist", "CustomerID");
+        ArrayList<Integer> al = DatabaseConnection.databaseReturnInt("SELECT * FROM joblist", "jobID");
 
         JobID = IDSlotIn(al, 0);
 
         //DatabaseConnection.databaseAffectTemplate("INSERT INTO pendingjoblist VALUES ('" + JobID + "', '" + CustomerID + "', 'NULL', 'NULL')");
-        DatabaseConnection.databaseAffectTemplate("INSERT INTO pendingjoblist VALUES ('" + JobID + "', '" + "pending" + "', 'NULL', " + vehicleID + "', 'NULL', 'NULL')");
+        //DatabaseConnection.databaseAffectTemplate("INSERT INTO pendingjoblist VALUES ('" + JobID + "', '" + "pending" + "', 'NULL', " + vehicleID + "', 'NULL', 'NULL')");
+        DatabaseConnection.databaseAffectTemplate("INSERT INTO joblist VALUES (" + JobID + ", 'pending', NULL, " + vehicleID + ", NULL, NULL)");
+        //INSERT INTO joblist VALUES (4321, 'pending', NULL, 5432, NULL, NULL)
     }
     private int IDSlotIn(ArrayList<Integer> al, int min){
         int x;
@@ -77,10 +86,11 @@ public class ReceptionistPanel extends JDialog{
         boolean foundspace = false;
         //find a free slot
         for (int i = 0; i < al.size(); i++) {
-            for (int j = 0; j < al.size(); i++) {
+            for (int j = 0; j < al.size(); j++) {
                 if ((al.get(i)+1) == al.get(j)) { count++; }
             }
             if(count == 0){ return al.get(i)+1; }
+            count = 0;
         }
         //no slots, so add 1 to maximum
         x = IDmax(al,0) + 1;
