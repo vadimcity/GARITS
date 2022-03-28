@@ -7,10 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import static DB.DatabaseConnection.*;
 
@@ -18,12 +16,16 @@ public class BackupUI extends JDialog{
     private JButton backupButton;
     private JPanel BackupPanel;
     private JButton restoreButton;
+    private JTextField textFieldUsername;
+    private JPasswordField passwordField;
+    private JComboBox comboBox1;
+    private JButton deleteRestorePointButton;
 
 
     public BackupUI () {
 //        super(parent);
         setContentPane(BackupPanel);
-        setMinimumSize(new Dimension(430, 220));
+        setMinimumSize(new Dimension(730, 220));
         setModal(true);
 //        setLocationRelativeTo(parent);
 
@@ -33,13 +35,13 @@ public class BackupUI extends JDialog{
 
                 try {
                     DriverManager.getConnection(database_url, mysqlUser, mysqlPassword);
-                    Process process = Runtime.getRuntime().exec("lsblk");
+                    Process process = Runtime.getRuntime().exec("./scripts/backup-db.sh " + textFieldUsername.getText() + " " + passwordField.getText());
 
                     BufferedReader reader = new BufferedReader(
                             new InputStreamReader(process.getInputStream()));
                     String line;
                     while ((line = reader.readLine()) != null) {
-                        System.out.println(line);
+                        JOptionPane.showMessageDialog(null, line);
                     }
 
                     reader.close();
@@ -48,6 +50,18 @@ public class BackupUI extends JDialog{
                     e.printStackTrace();
                 }
            }
+        });
+        restoreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+        deleteRestorePointButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
         });
         setVisible(true);
     }
