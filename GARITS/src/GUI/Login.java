@@ -42,7 +42,7 @@ public class Login extends JDialog {
             ResultSet rs = pst.executeQuery();
             sql = "SELECT * FROM useraccounts WHERE username=\"" + textField1.getText() +"\" AND user_password=\"" + passwordField1.getText() + "\"";
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Logging In");
+//                JOptionPane.showMessageDialog(null, "Logging In");
                 Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
                 this.dispose();
 //                Main.newpanel();
