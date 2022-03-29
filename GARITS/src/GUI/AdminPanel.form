@@ -38,6 +38,7 @@
         </constraints>
         <properties>
           <model>
+            <item value="ChooseRole"/>
             <item value="Admin"/>
             <item value="Foreperson"/>
             <item value="Mechanic"/>
