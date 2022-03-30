@@ -1,27 +1,20 @@
 package GUI;
 
 import DB.DatabaseConnection;
-import System.StockControlSystem;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
-public class MechanicPanel extends JDialog {
+public class MechanicPanel {
     int x = 0;
     StockControlSystem scs;
-    private JPanel mechanicPanel;
 
-    public MechanicPanel() {
-        //testIDslot();
-
-//        super(parent);
-        setTitle("MechanicPanel");
-        setContentPane(mechanicPanel);
-        setMinimumSize(new Dimension(1290, 300));
-        setModal(true);
-//        setLocationRelativeTo(parent);
-        setVisible(true);
+    public Mechanic(String un, String pw, StockControlSystem s){
+        super("Roles.Mechanic", un,pw);
+        scs = s;
+    }
+    public Mechanic(String role, String un, String pw, StockControlSystem s){
+        super(role, un,pw);
+        scs = s;
     }
 
 
@@ -42,8 +35,4 @@ public class MechanicPanel extends JDialog {
     }
 
     public void getParts () { scs.getParts(); }
-
-    public static void main(String[] args) {
-        MechanicPanel mymp = new MechanicPanel();
-    }
 }
