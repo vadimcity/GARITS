@@ -108,10 +108,10 @@ public class AdminPanel extends JDialog {
             String line = lines[i].toString();
 //            table1.addColumn(line);
         }
-    public static void main(String[] args) {
-        AdminPanel AP = new AdminPanel();
     }
 
+    public static void main(String[] args) {
+        AdminPanel AP = new AdminPanel();
     }
 
     public void createAccount(String username, char[] password, Object role) {
