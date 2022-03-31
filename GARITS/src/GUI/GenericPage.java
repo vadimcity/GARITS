@@ -16,13 +16,13 @@ public class GenericPage extends JDialog {
     private JButton alterUserAccountButton;
     private JPasswordField passwordField1;
     private JScrollBar scrollBar1;
-    private JPanel adminPanel;
+    private JPanel genericPage;
     private JButton signOutButton;
 
     public GenericPage(JFrame parent) {
         super(parent);
         setTitle("Admin Panel");
-        setContentPane(adminPanel);
+        setContentPane(genericPage);
         setMinimumSize(new Dimension(1000, 400));
         setModal(true);
         setLocationRelativeTo(parent);
