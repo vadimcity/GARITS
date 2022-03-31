@@ -63,6 +63,12 @@ public class AdminPanel extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JOptionPane.showMessageDialog(null, "Altering Account Details...");
+                //IF USERNAME IS LEFT BLANK
+                if (textFieldUsername.getText().isEmpty()) {
+                    System.out.println("ENTER USERNAME");
+                }
+                else
+                alterAccount(textFieldUsername.getText(),textFieldEmail.getText(),passwordField.toString(),roleBox.getSelectedItem().toString());
             }
         });
         databaseButton.addActionListener(new ActionListener() {
@@ -95,6 +101,12 @@ public class AdminPanel extends JDialog {
             }
         });
         setVisible(true);
+        deleteUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteAccount(textFieldUsername.getText());
+            }
+        });
     }
 
     private void tableIN() throws FileNotFoundException {
@@ -127,6 +139,31 @@ public class AdminPanel extends JDialog {
                 "INSERT INTO useraccounts VALUES ('" + username + "', NULL, NULL, '" + password + "', NULL,  '" + role + "')");
         System.out.println("Sent.");
     }
+
+    public void alterAccount(String username,String email,String password, String role){
+        if(!textFieldEmail.getText().isEmpty()) {
+            DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET email ='"+ email + "' WHERE username='" +username+"';");
+            //SQL STATEMENT TO CHANGE EMAIL ADDRESS
+        }
+        if(!(passwordField.getPassword().length == 0)) {
+            DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET password = '"+ password +"' WHERE username='" +username+"';");
+            //SQL STATEMENT TO CHANGE PASSWORD
+        }
+        if (roleBox.getSelectedItem().toString() != "ChooseRole") {
+            DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET role = '"+ role +"' WHERE username='" +username+"';");
+            //SQL STATEMENT TO CHANGE ROLE
+        }
+        else {
+            System.out.println("ERROR");
+        }
+   }
+
+    public void deleteAccount(String username){
+        DatabaseConnection.databaseAffectTemplate("DELETE FROM useraccounts WHERE username='" + username + "';");
+    }
+
+
+
 }
 //    /*private*/ public void deleteAccount(String username){
 //        DatabaseConnection.databaseAffectTemplate(
