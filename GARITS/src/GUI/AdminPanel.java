@@ -38,7 +38,11 @@ public class AdminPanel extends JDialog {
         setContentPane(adminPanel);
         setMinimumSize(new Dimension(720, 400));
         setModal(true);
-        tableIN();
+        try {
+            tableIN();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 //        setLocationRelativeTo(parent);
 
         logoutButton.addActionListener(new ActionListener() {
@@ -102,7 +106,7 @@ public class AdminPanel extends JDialog {
 
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i].toString();
-            table1.addColumn(line);
+//            table1.addColumn(line);
         }
 
     }
