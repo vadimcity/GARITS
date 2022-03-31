@@ -34,15 +34,15 @@ public class Login extends JDialog {
 
     private void loginUser() {
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3308/t18database", "root", "jack123");
-            String sql = "SELECT * FROM useraccounts WHERE username=? AND password=? ";
+            Connection con = DriverManager.getConnection("jdbc:mysql://192.168.0.10:3308/t18database", "root", "example");
+            String sql = "SELECT * FROM useraccounts WHERE username=? AND user_password=? ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1,  textField1.getText());
             pst.setString(2, passwordField1.getText());
             ResultSet rs = pst.executeQuery();
-            sql = "SELECT * FROM useraccounts WHERE username=" + textField1.getText() + "AND password=" + passwordField1.getPassword();
+            sql = "SELECT * FROM useraccounts WHERE username=\"" + textField1.getText() +"\" AND user_password=\"" + passwordField1.getText() + "\"";
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Logging In");
+//                JOptionPane.showMessageDialog(null, "Logging In");
                 Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
                 this.dispose();
 //                Main.newpanel();

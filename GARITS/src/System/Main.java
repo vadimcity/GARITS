@@ -1,5 +1,6 @@
 package System;
 
+import DB.BackupUI;
 import DB.DatabaseConnection;
 import GUI.*;
 import Roles.*;
@@ -38,7 +39,7 @@ public class Main {
 
         m.changeDurationOfJob(9543, 15, 36, 45);
 
-        fr.setDiscountPlan("flexible", 1234);
+        fr.setDiscountPlan(1234,"flexible");
     }
 
     public static boolean checkRole(String role){
@@ -156,7 +157,9 @@ public class Main {
     //actual intended functionality
     public static void main(String[] args) {
 //        dealWithDatabase();
-          Login myLogin = new Login ();
+//          Login myLogin = new Login ();
+//          ReceptionistPanel myrp = new ReceptionistPanel();
 //        AdminPanel AP = new AdminPanel(null);
+        BackupUI backupUI = new BackupUI ();
     }
 }

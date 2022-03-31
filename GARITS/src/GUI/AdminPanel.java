@@ -1,11 +1,17 @@
 package GUI;
 
+import DB.BackupUI;
 import DB.DatabaseConnection;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import static DB.DatabaseConnection.*;
 
 public class AdminPanel extends JDialog {
 
@@ -20,13 +26,23 @@ public class AdminPanel extends JDialog {
     private JPasswordField passwordField;
     private JTable table1;
     private JButton logoutButton;
+    private JButton databaseButton;
+    private JButton updatedButton;
+    private JLabel dateField;
+    private JTextField textField1;
+    private JButton backupButton;
 
     public AdminPanel() {
 //        super(parent);
         setTitle("Admin Panel");
         setContentPane(adminPanel);
-        setMinimumSize(new Dimension(430, 220));
+        setMinimumSize(new Dimension(720, 400));
         setModal(true);
+        try {
+            tableIN();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 //        setLocationRelativeTo(parent);
 
         logoutButton.addActionListener(new ActionListener() {
@@ -55,6 +71,35 @@ public class AdminPanel extends JDialog {
                 alterAccount(textFieldUsername.getText(),textFieldEmail.getText(),passwordField.toString(),roleBox.getSelectedItem().toString());
             }
         });
+        databaseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    Process process = Runtime.getRuntime().exec("./scripts/ping.sh");
+
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        JOptionPane.showMessageDialog(null, line);
+                    }
+
+                    reader.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                dispose();
+                BackupUI backupUI = new BackupUI();
+
+            }
+        });
+        updatedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                updatedButton.setText("NEWDATE"); //Update list and update button text to show date.
+            }
+        });
         setVisible(true);
         deleteUserButton.addActionListener(new ActionListener() {
             @Override
@@ -64,10 +109,22 @@ public class AdminPanel extends JDialog {
         });
     }
 
-    public static void main(String[] args) {
-//        AdminPanel AP = new AdminPanel();
+    private void tableIN() throws FileNotFoundException {
+
+        File filePath = new File("./users/users.txt");
+
+        BufferedReader input = new BufferedReader(new FileReader(filePath));
+        Object[] lines = input.lines().toArray();
+
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i].toString();
+//            table1.addColumn(line);
+        }
     }
 
+    public static void main(String[] args) {
+        AdminPanel AP = new AdminPanel();
+    }
 
     public void createAccount(String username, char[] password, Object role) {
 //        String sql = "INSERT INTO useraccounts VALUES ('Samantha', 'x123', 'Mechanic')";
