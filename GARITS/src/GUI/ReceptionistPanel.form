@@ -100,7 +100,7 @@
           <text value="Address"/>
         </properties>
       </component>
-      <component id="374e0" class="javax.swing.JTextField" default-binding="true">
+      <component id="374e0" class="javax.swing.JTextField" binding="telephoneNoTextField">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -110,7 +110,7 @@
           <text value="Telephnoe No."/>
         </properties>
       </component>
-      <component id="54ce5" class="javax.swing.JTextField" default-binding="true">
+      <component id="54ce5" class="javax.swing.JTextField" binding="nameTextField">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -120,7 +120,7 @@
           <text value="Name"/>
         </properties>
       </component>
-      <component id="b2332" class="javax.swing.JTextField" default-binding="true">
+      <component id="b2332" class="javax.swing.JTextField" binding="emailTextField">
         <constraints>
           <grid row="7" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -130,7 +130,7 @@
           <text value="Email"/>
         </properties>
       </component>
-      <component id="776f3" class="javax.swing.JTextField" default-binding="true">
+      <component id="776f3" class="javax.swing.JTextField" binding="postcodeTextField">
         <constraints>
           <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -148,7 +148,7 @@
           <text value="Create"/>
         </properties>
       </component>
-      <component id="55bdc" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="55bdc" class="javax.swing.JComboBox" binding="DPcomboBox">
         <constraints>
           <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

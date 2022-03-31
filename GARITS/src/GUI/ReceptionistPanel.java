@@ -20,8 +20,12 @@ public class ReceptionistPanel extends JDialog{
     private JTextField dateTextField;
     private JTextField addressTextField;
     private JButton createButton;
-    private JComboBox comboBox1;
+    private JComboBox DPcomboBox;
     private JPanel receptionistPanel;
+    private JTextField nameTextField;
+    private JTextField postcodeTextField;
+    private JTextField telephoneNoTextField;
+    private JTextField emailTextField;
 
     private StockControlSystem scs;
 
@@ -54,6 +58,12 @@ public class ReceptionistPanel extends JDialog{
     }
 
     public void createCustomerRecord(){
+        //Date, Name, Address, Postcode, Telephone No, Email, DiscountPlan
+        String sql = "INSERT INTO customerlist VALUES ("
+                + dateTextField.getText() + nameTextField.getText() + addressTextField.getText() +
+                postcodeTextField.getText() + Integer.parseInt(telephoneNoTextField.getText()) +
+                emailTextField.getText() + (String)DPcomboBox.getSelectedItem() + ")";
+        DatabaseConnection.databaseAffectTemplate(sql);
     }
 
     //Attributes of job table:

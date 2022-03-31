@@ -10,9 +10,12 @@ import java.util.ArrayList;
 public class Main {
     final static String[] roles = {"Roles.Admin", "Roles.Foreperson", "Roles.Franchisee", "Roles.Mechanic", "Roles.Receptionist"};
     private static String role;
+    private static StockControlSystem scs;
 
     public static void setRole(String rl){ role = rl; }
     public static String getRole(){ return role; }
+
+    public static StockControlSystem getSCS(){ return scs; }
 
     public static void newpanel(){
         String role = getRole();
@@ -24,7 +27,6 @@ public class Main {
     }
 
     public static void test(Admin ad){
-        StockControlSystem scs = new StockControlSystem(100);
 
         Admin a = ad;
         Foreperson fo = new Foreperson("Sampson", "password", scs);
@@ -156,6 +158,7 @@ public class Main {
 
     //actual intended functionality
     public static void main(String[] args) {
+        scs = new StockControlSystem(100);
 //        dealWithDatabase();
 //          Login myLogin = new Login ();
 //          ReceptionistPanel myrp = new ReceptionistPanel();
