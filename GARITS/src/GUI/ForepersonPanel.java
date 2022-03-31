@@ -1,8 +1,14 @@
 package GUI;
 
-import javax.swing.*;
+import DB.DatabaseConnection;
+import System.StockControlSystem;
 
-public class ForepersonPanel {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ForepersonPanel extends JDialog {
     private JButton backButton;
     private JButton logoutButton;
     private JTextField jobIDTextField;
@@ -16,14 +22,20 @@ public class ForepersonPanel {
     private JButton viewPendingJobListButton;
     private JButton receptionistButton;
     private JButton mechanicButton;
-    
+    private JPanel forepersonPanel;
+
     int x = 0;
 
-    public Foreperson(String un, String pw, StockControlSystem scs){
-        super("Roles.Foreperson", un,pw, scs);
-    }
-    public Foreperson(String role, String un, String pw, StockControlSystem scs){
-        super(role, un,pw, scs);
+    public ForepersonPanel() {
+        //testIDslot();
+
+//        super(parent);
+        setTitle("ForepersonPanel");
+        setContentPane(forepersonPanel);
+        setMinimumSize(new Dimension(1290, 300));
+        setModal(true);
+//        setLocationRelativeTo(parent);
+        setVisible(true);
     }
 
 
@@ -41,4 +53,9 @@ public class ForepersonPanel {
     }
     public void addJobToPendingList(){
     }
+
+    public static void main(String[] args) {
+        ForepersonPanel myfp = new ForepersonPanel();
+    }
+
 }
