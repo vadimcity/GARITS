@@ -29,7 +29,7 @@
           <text value="Log Out"/>
         </properties>
       </component>
-      <component id="70a56" class="javax.swing.JTextField" binding="carNoTextField" default-binding="true">
+      <component id="70a56" class="javax.swing.JTextField" binding="Carno">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -39,7 +39,7 @@
           <text value="Car No."/>
         </properties>
       </component>
-      <component id="ed91d" class="javax.swing.JTextField" default-binding="true">
+      <component id="ed91d" class="javax.swing.JTextField" binding="Custno">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -49,7 +49,7 @@
           <text value="Customer Name"/>
         </properties>
       </component>
-      <component id="127a5" class="javax.swing.JTextField" default-binding="true">
+      <component id="127a5" class="javax.swing.JTextField" binding="Mechno">
         <constraints>
           <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>

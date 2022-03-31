@@ -106,11 +106,6 @@ public class ReceptionistPanel extends JDialog{
         return min;
     }
 
-    public void monitorProgressJob(){           // " (including searching for a specific job by car number, name of the customer, etc.) "    from GARITS spec
-    }
-    public void searchJob(){
-    }
-
     public void stockAlertPopup () { scs.stockAlertPopUp(); }
 
     public void orderParts () { scs.orderParts(); }
