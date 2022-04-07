@@ -46,7 +46,8 @@ public class Login extends JDialog {
                 Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
                 this.dispose();
 //                Main.newpanel();
-                AdminPanel AP = new AdminPanel();
+                //AdminPanel AP = new AdminPanel();
+                MainPanel mp = new MainPanel();
             } else {
                 JOptionPane.showMessageDialog(null, "Username or Password incorrect");
                 textField1.setText("");
@@ -58,8 +59,8 @@ public class Login extends JDialog {
         }
     }
 
-    /* public static void main (String[] args){
-        Login myLogin = new Login (null);
+    public static void main (String[] args){
+        Login myLogin = new Login();
 
-    } */
+    }
 }

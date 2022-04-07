@@ -8,7 +8,7 @@ import Roles.*;
 import java.util.ArrayList;
 
 public class Main {
-    final static String[] roles = {"Roles.Admin", "Roles.Foreperson", "Roles.Franchisee", "Roles.Mechanic", "Roles.Receptionist"};
+    final static String[] roles = {"Admin", "Foreperson", "Franchisee", "Mechanic", "Receptionist"};
     private static String role;
     private static StockControlSystem scs;
 
@@ -158,11 +158,15 @@ public class Main {
 
     //actual intended functionality
     public static void main(String[] args) {
+        setRole("Admin");
         scs = new StockControlSystem(100);
+
+        MainPanel mp = new MainPanel();
 //        dealWithDatabase();
 //          Login myLogin = new Login ();
 //          ReceptionistPanel myrp = new ReceptionistPanel();
 //        AdminPanel AP = new AdminPanel(null);
-        BackupUI backupUI = new BackupUI ();
+
+        //BackupUI backupUI = new BackupUI ();
     }
 }

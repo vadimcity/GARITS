@@ -80,16 +80,6 @@
           <text value="Create Customer Record"/>
         </properties>
       </component>
-      <component id="b7cd2" class="javax.swing.JTextField" binding="dateTextField" default-binding="true">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Date"/>
-        </properties>
-      </component>
       <component id="4f28e" class="javax.swing.JTextField" binding="addressTextField" default-binding="true">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -108,16 +98,6 @@
         </constraints>
         <properties>
           <text value="Telephnoe No."/>
-        </properties>
-      </component>
-      <component id="54ce5" class="javax.swing.JTextField" binding="nameTextField">
-        <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Name"/>
         </properties>
       </component>
       <component id="b2332" class="javax.swing.JTextField" binding="emailTextField">
@@ -155,6 +135,9 @@
         <properties>
           <model>
             <item value="Discount Plan"/>
+            <item value="Fixed"/>
+            <item value="Variable"/>
+            <item value="Flexible"/>
           </model>
         </properties>
       </component>
@@ -164,6 +147,46 @@
         </constraints>
         <properties>
           <text value="Log Out"/>
+        </properties>
+      </component>
+      <component id="54ce5" class="javax.swing.JTextField" binding="firstNameTextField">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="FirstName"/>
+        </properties>
+      </component>
+      <component id="15240" class="javax.swing.JTextField" binding="custIDTextField">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="CustomerID"/>
+        </properties>
+      </component>
+      <component id="b7cd2" class="javax.swing.JTextField" binding="dateTextField" default-binding="true">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Date"/>
+        </properties>
+      </component>
+      <component id="329e5" class="javax.swing.JTextField" binding="surnameTextField" default-binding="true">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Surname"/>
         </properties>
       </component>
     </children>

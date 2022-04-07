@@ -22,10 +22,12 @@ public class ReceptionistPanel extends JDialog{
     private JButton createButton;
     private JComboBox DPcomboBox;
     private JPanel receptionistPanel;
-    private JTextField nameTextField;
+    private JTextField firstNameTextField;
     private JTextField postcodeTextField;
     private JTextField telephoneNoTextField;
     private JTextField emailTextField;
+    private JTextField custIDTextField;
+    private JTextField surnameTextField;
 
     private StockControlSystem scs;
 
@@ -44,6 +46,13 @@ public class ReceptionistPanel extends JDialog{
                 takeInNewJobs(Integer.parseInt(vehicleIDTextField.getText()));
             }
         });
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createCustomerRecord();
+            }
+        });
+
         setVisible(true);
     }
 
@@ -58,11 +67,12 @@ public class ReceptionistPanel extends JDialog{
     }
 
     public void createCustomerRecord(){
-        //Date, Name, Address, Postcode, Telephone No, Email, DiscountPlan
-        String sql = "INSERT INTO customerlist VALUES ("
-                + dateTextField.getText() + nameTextField.getText() + addressTextField.getText() +
-                postcodeTextField.getText() + Integer.parseInt(telephoneNoTextField.getText()) +
-                emailTextField.getText() + (String)DPcomboBox.getSelectedItem() + ")";
+        //ID, Date, firstName, Surname, Address, Postcode, Telephone No, Email, DiscountPlan
+        String sql = "INSERT INTO customermemberlist VALUES ("
+                + custIDTextField.getText() + "," + dateTextField.getText() + "," + firstNameTextField.getText() + "," +
+                surnameTextField.getText() + "," + addressTextField.getText() + "," + postcodeTextField.getText() + "," +
+                Integer.parseInt(telephoneNoTextField.getText()) + "," + emailTextField.getText() + "," +
+                (String)DPcomboBox.getSelectedItem() + ")";
         DatabaseConnection.databaseAffectTemplate(sql);
     }
 
