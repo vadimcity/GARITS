@@ -1,6 +1,8 @@
 package GUI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +17,7 @@ public class MainPanel extends JDialog {
     private JButton franchiseePanelButton;
     private JButton forepersonPanelButton;
     private JLabel n;
-    private JLabel n2;
+    private JLabel navigate;
     public static ImageIcon image = new ImageIcon("GUI/logo/final-logo.png");
 
     private int roleno;
@@ -24,19 +26,32 @@ public class MainPanel extends JDialog {
 //        super(parent);
         setTitle("MainPanel");
         setContentPane(mainPanel);
-        setMinimumSize(new Dimension(430, 220));
+        setMinimumSize(new Dimension(500, 220));
         //setIconImage(image.getImage());
         //getContentPane().setBackground(new Color(51, 172, 159));
         //getContentPane().setBackground(Color.CYAN);
 
         //n.setIcon(image);
 
+        navigate.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        navigate.setHorizontalAlignment(JLabel.CENTER);
+
+        allButtons();
         calculateRole();
         setup();
+        logoutButton.setEnabled(true);
 
         setModal(true);
 //        setLocationRelativeTo(parent);
         setVisible(true);
+    }
+
+    private void allButtons(){
+        dampenButton(adminPanelButton); dampenButton(forepersonPanelButton); dampenButton(franchiseePanelButton); dampenButton(mechanicPanelButton); dampenButton(receptionistPanelButton); dampenButton(logoutButton);
+    }
+    private void dampenButton(JButton b){
+        b.setEnabled(false);
+        b.setFocusable(false);
     }
 
     private void calculateRole(){
@@ -56,6 +71,7 @@ public class MainPanel extends JDialog {
                     AdminPanel ap = new AdminPanel();
                 }
             });
+            adminPanelButton.setEnabled(true);
         }
         if((roleno == 2) || (roleno == 3)) {
             forepersonPanelButton.addActionListener(new ActionListener() {
@@ -65,6 +81,7 @@ public class MainPanel extends JDialog {
                     ForepersonPanel fp = new ForepersonPanel();
                 }
             });
+            forepersonPanelButton.setEnabled(true);
         }
         if((roleno == 3)) {
             franchiseePanelButton.addActionListener(new ActionListener() {
@@ -74,6 +91,7 @@ public class MainPanel extends JDialog {
                     FranchiseePanel frp = new FranchiseePanel();
                 }
             });
+            franchiseePanelButton.setEnabled(true);
         }
         if((roleno == 2) || (roleno == 3) || (roleno == 4)) {
             mechanicPanelButton.addActionListener(new ActionListener() {
@@ -83,6 +101,7 @@ public class MainPanel extends JDialog {
                     MechanicPanel mp = new MechanicPanel();
                 }
             });
+            mechanicPanelButton.setEnabled(true);
         }
         if((roleno == 2) || (roleno == 3) || (roleno == 5)) {
             receptionistPanelButton.addActionListener(new ActionListener() {
@@ -92,6 +111,7 @@ public class MainPanel extends JDialog {
                     ReceptionistPanel rp = new ReceptionistPanel();
                 }
             });
+            receptionistPanelButton.setEnabled(true);
         }
         logoutButton.addActionListener(new ActionListener() {
             @Override
