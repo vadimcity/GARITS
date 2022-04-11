@@ -2,6 +2,19 @@ package GUI;
 
 import DB.DatabaseConnection;
 import System.StockControlSystem;
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
+import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
+import org.apache.pdfbox.pdmodel.interactive.form.PDField;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +24,7 @@ public class MechanicPanel extends JDialog {
     int x = 0;
     StockControlSystem scs;
     private JPanel mechanicPanel;
+    private JButton button1;
 
     public MechanicPanel() {
         //testIDslot();
@@ -21,6 +35,14 @@ public class MechanicPanel extends JDialog {
         setMinimumSize(new Dimension(1290, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
+
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "button pressed");
+                fillform();
+            }
+        });
         setVisible(true);
     }
 
@@ -36,6 +58,31 @@ public class MechanicPanel extends JDialog {
         DatabaseConnection.databaseAffectTemplate("UPDATE activeJoblist SET Duration = '" + hours + ":" + minutes + ":" + seconds + "' WHERE JobID='" + JobID + "'");
     }
 
+    public void fillform(){
+        InputStream input = null;
+        System.out.println("button pressed");
+        try {
+            input = new FileInputStream(new File("./jobsheetFormHidden.pdf"));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        try (PDDocument pdfDoc = Loader.loadPDF(input);) {
+            System.out.println("loaded");
+            PDDocumentCatalog docCatalog = pdfDoc.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+
+            PDField jobNo = acroForm.getField("jobNo");
+            jobNo.setValue("1234");
+            System.out.println("value set");
+            /*make the final document uneditable*/
+            acroForm.flatten();
+            /*generate a new pdf file and save it to the given location*/
+            pdfDoc.save(new File("./final-document.pdf"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void fillJobSheet(){
     }
     public void printTheJobSheet(){
