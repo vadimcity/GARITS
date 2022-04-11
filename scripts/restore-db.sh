@@ -5,5 +5,6 @@ RESULT=$?
 if [ $RESULT == 0 ]; then 
 	echo "Restore: $date_var has been made."
 else
-	echo "Restore Failed"
+	echo "Restore Failed."
+	echo "Check Username and Password."
 fi
