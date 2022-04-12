@@ -75,7 +75,7 @@ public class MechanicPanel extends JDialog {
         InputStream input = null;
         System.out.println("button pressed");
         try {
-            input = new FileInputStream(new File("./jobsheetFormHidden.pdf"));
+            input = new FileInputStream(new File("./jobsheetForm.pdf"));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -85,12 +85,12 @@ public class MechanicPanel extends JDialog {
             PDAcroForm acroForm = docCatalog.getAcroForm();
 
             PDField jobNo = acroForm.getField("jobNo");
-            jobNo.setValue("1234");
+            jobNo.setValue("7862");
             System.out.println("value set");
             /*make the final document uneditable*/
             acroForm.flatten();
             /*generate a new pdf file and save it to the given location*/
-            pdfDoc.save(new File("./final-document.pdf"));
+            pdfDoc.save(new File("./jobSheets/3.pdf"));
 
         } catch (IOException e) {
             e.printStackTrace();
