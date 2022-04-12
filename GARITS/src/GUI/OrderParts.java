@@ -12,13 +12,11 @@ public class OrderParts  extends JDialog{
     private JPanel partsPanel;
     private JButton logOutButton;
 
-    public OrderParts (JFrame parent) {
-        super(parent);
+    public OrderParts () {
         setTitle("Parts List");
         setContentPane(partsPanel);
         setMinimumSize(new Dimension(430,620));
         setModal(true);
-        setLocationRelativeTo(parent);
         setVisible(true);
 
         searchButton.addActionListener(new ActionListener() {
@@ -30,6 +28,6 @@ public class OrderParts  extends JDialog{
     }
 
     public static void main (String[] args){
-        OrderParts dbParts = new OrderParts(null);
+        OrderParts dbParts = new OrderParts();
     }
 }

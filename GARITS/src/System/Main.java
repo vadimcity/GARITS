@@ -11,6 +11,8 @@ public class Main {
     final static String[] roles = {"Admin", "Foreperson", "Franchisee", "Mechanic", "Receptionist"};
     private static String role;
     private static StockControlSystem scs;
+    private static String currentpage;
+    private static String backpage;
 
     public static void setRole(String rl){ role = rl; }
     public static String getRole(){ return role; }
@@ -19,6 +21,30 @@ public class Main {
             if(role == roles[i]){ return true; }
         }
         return false;
+    }
+
+    public static void updateMain(String newpage){
+        backpage = currentpage;
+        currentpage = newpage;
+    }
+    public static void backPage(){
+        if(backpage.equals("AdminPanel")){ AdminPanel a = new AdminPanel(); }
+        else if(backpage.equals("CarPanel")){ CarPanel c = new CarPanel(); }
+        else if(backpage.equals("CreateAlterAccountHolder")){ CreateAlterAccountHolder c = new CreateAlterAccountHolder(); }
+        else if(backpage.equals("FillJobSheet")){ FillJobSheet f = new FillJobSheet(); }
+        else if(backpage.equals("ForepersonPanel")){ ForepersonPanel f = new ForepersonPanel(); }
+        else if(backpage.equals("FranchiseePanel")){ FranchiseePanel f = new FranchiseePanel(); }
+        else if(backpage.equals("Login")){ Login l = new Login(); }
+        else if(backpage.equals("MainPanel")){ MainPanel m = new MainPanel(); }
+        else if(backpage.equals("MechanicPanel")){ MechanicPanel m = new MechanicPanel(); }
+        else if(backpage.equals("OrderParts")){ OrderParts o = new OrderParts(); }
+        else if(backpage.equals("PendingJobPanel")){ PendingJobPanel p = new PendingJobPanel(); }
+        else if(backpage.equals("ReceptionistPanel")){ ReceptionistPanel r = new ReceptionistPanel(); }
+        else if(backpage.equals("ReceptionistStockControl")){ ReceptionistStockControl r = new ReceptionistStockControl(); }
+        else if(backpage.equals("SearchJob")){ SearchJob s = new SearchJob(); }
+        else{
+            System.out.println("Pagename not correct, page = " + backpage);
+        }
     }
 
     public static StockControlSystem getSCS(){ return scs; }
