@@ -17,28 +17,26 @@ public class GenericPage extends JDialog {
     private JPasswordField passwordField1;
     private JScrollBar scrollBar1;
     private JPanel genericPage;
-    private JButton signOutButton;
+    private JButton logOutButton;
 
-    public GenericPage(JFrame parent) {
-        super(parent);
-        setTitle("Admin Panel");
+    public GenericPage() {
+        setTitle("Generic Panel");
         setContentPane(genericPage);
         setMinimumSize(new Dimension(1000, 400));
         setModal(true);
-        setLocationRelativeTo(parent);
-        setVisible(true);
-        signOutButton.addActionListener(new ActionListener() {
+        logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                signOut();
+                dispose();
+                Login login = new Login();
             }
         });
+        setVisible(true);
     }
 
-    private void signOut(){ }
 
     public static void main(String[] args) {
-        GenericPage AP = new GenericPage(null);
+        GenericPage AP = new GenericPage();
     }
 }
 

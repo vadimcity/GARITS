@@ -14,6 +14,12 @@ public class Main {
 
     public static void setRole(String rl){ role = rl; }
     public static String getRole(){ return role; }
+    public static boolean checkRole(String role){
+        for (int i = 0; i < roles.length; i++) {
+            if(role == roles[i]){ return true; }
+        }
+        return false;
+    }
 
     public static StockControlSystem getSCS(){ return scs; }
 
@@ -44,12 +50,6 @@ public class Main {
         fr.setDiscountPlan(1234,"flexible");
     }
 
-    public static boolean checkRole(String role){
-        for (int i = 0; i < roles.length; i++) {
-            if(role == roles[i]){ return true; }
-        }
-        return false;
-    }
     static boolean checkUsername(String un){
         /* String sql = "SELECT CASE WHEN EXISTS ( SELECT * FROM useraccounts WHERE Username='" + un + "') THEN 'TRUE' ELSE 'FALSE' END ";
         if(DB.DatabaseConnection.databaseReturnBool(sql)){ return true; } */
@@ -161,7 +161,8 @@ public class Main {
         setRole("Admin");
         scs = new StockControlSystem(100);
 
-        MainPanel mp = new MainPanel();
+        //MainPanel mp = new MainPanel();
+        Login myLogin = new Login ();
 //        dealWithDatabase();
 //          Login myLogin = new Login ();
 //          ReceptionistPanel myrp = new ReceptionistPanel();
