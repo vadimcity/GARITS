@@ -12,7 +12,7 @@ public class Main {
     private static String role;
     private static StockControlSystem scs;
 
-    public static void setRole(String rl){ role = rl; System.out.println("Role = " + rl); }
+    public static void setRole(String rl){ role = rl; }
     public static String getRole(){ return role; }
     public static boolean checkRole(String role){
         for (int i = 0; i < roles.length; i++) {

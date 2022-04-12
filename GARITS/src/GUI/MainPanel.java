@@ -55,11 +55,11 @@ public class MainPanel extends JDialog {
     }
 
     private void calculateRole(){
-        if(Main.getRole() == "Admin"){ roleno = 1; }
-        else if(Main.getRole() == "Foreperson"){ roleno = 2; }
-        else if(Main.getRole() == "Franchisee"){ roleno = 3; }
-        else if(Main.getRole() == "Mechanic"){ roleno = 4; }
-        else if(Main.getRole() == "Receptionist"){ roleno = 5; }
+        if(Main.getRole().equals("Admin")){ roleno = 1; }
+        else if(Main.getRole().equals("Foreperson")){ roleno = 2; }
+        else if(Main.getRole().equals("Franchisee")){ roleno = 3; }
+        else if(Main.getRole().equals("Mechanic")){ roleno = 4; }
+        else if(Main.getRole().equals("Receptionist")){ roleno = 5; }
         else{
             System.out.println("Role not correct, role = " + Main.getRole() + " roleno = " + roleno);
         }
