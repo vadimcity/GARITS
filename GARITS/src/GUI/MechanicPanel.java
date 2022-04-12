@@ -24,7 +24,20 @@ public class MechanicPanel extends JDialog {
     int x = 0;
     StockControlSystem scs;
     private JPanel mechanicPanel;
-    private JButton button1;
+    private JButton backButton;
+    private JButton logOutButton;
+    private JTextField jobIDTextField;
+    private JTextField hoursTextField;
+    private JTextField minutesTextField;
+    private JTextField secondsTextField;
+    private JButton changeDurationOfJobButton;
+    private JButton jobIDButton;
+    private JButton typeButton;
+    private JButton amountButton;
+    private JButton getPartsButton;
+    private JButton fillJobSheetButton;
+    private JButton pickNewJobButton;
+    private JTable table1;
 
     public MechanicPanel() {
         //testIDslot();
@@ -36,7 +49,7 @@ public class MechanicPanel extends JDialog {
         setModal(true);
 //        setLocationRelativeTo(parent);
 
-        button1.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "button pressed");
