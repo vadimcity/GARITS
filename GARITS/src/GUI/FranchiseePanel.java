@@ -19,7 +19,7 @@ public class FranchiseePanel extends JDialog{
 //        super(parent);
         setTitle("CarPanel");
         setContentPane(franchiseePanel);
-        setMinimumSize(new Dimension(600, 300));
+        setMinimumSize(new Dimension(650, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
         setVisible(true);
