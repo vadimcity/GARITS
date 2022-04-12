@@ -44,7 +44,8 @@ public class Login extends JDialog {
             if (rs.next()) {
 //                JOptionPane.showMessageDialog(null, "Logging In");
                 Main.setRole(DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
-                System.out.println(DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
+                System.out.println("Login role = " + DatabaseConnection.databaseReturnIndivString(sql, "user_role"));
+                System.out.println("Login role Main = " + Main.getRole());
                 this.dispose();
 //                Main.newpanel();
                 //AdminPanel AP = new AdminPanel();

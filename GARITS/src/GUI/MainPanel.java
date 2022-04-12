@@ -61,7 +61,7 @@ public class MainPanel extends JDialog {
         else if(Main.getRole() == "Mechanic"){ roleno = 4; }
         else if(Main.getRole() == "Receptionist"){ roleno = 5; }
         else{
-            System.out.println("Role not correct, role = " + Main.getRole());
+            System.out.println("Role not correct, role = " + Main.getRole() + " roleno = " + roleno);
         }
     }
 
