@@ -56,10 +56,13 @@ public class MainPanel extends JDialog {
 
     private void calculateRole(){
         if(Main.getRole() == "Admin"){ roleno = 1; }
-        if(Main.getRole() == "Foreperson"){ roleno = 2; }
-        if(Main.getRole() == "Franchisee"){ roleno = 3; }
-        if(Main.getRole() == "Mechanic"){ roleno = 4; }
-        if(Main.getRole() == "Receptionist"){ roleno = 5; }
+        else if(Main.getRole() == "Foreperson"){ roleno = 2; }
+        else if(Main.getRole() == "Franchisee"){ roleno = 3; }
+        else if(Main.getRole() == "Mechanic"){ roleno = 4; }
+        else if(Main.getRole() == "Receptionist"){ roleno = 5; }
+        else{
+            System.out.println("Role not correct, role = " + Main.getRole());
+        }
     }
 
     private void setup(){

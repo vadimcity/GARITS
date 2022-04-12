@@ -35,7 +35,7 @@
           <text value="Log Out"/>
         </properties>
       </component>
-      <component id="8da4d" class="javax.swing.JButton" default-binding="true">
+      <component id="8da4d" class="javax.swing.JButton" binding="applyButton">
         <constraints>
           <grid row="2" column="5" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

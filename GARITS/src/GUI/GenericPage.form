@@ -8,12 +8,12 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="a2ad3" class="javax.swing.JButton" binding="signOutButton" default-binding="true">
+      <component id="a2ad3" class="javax.swing.JButton" binding="logOutButton">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="SignOut"/>
+          <text value="Log Out"/>
         </properties>
       </component>
       <hspacer id="4c48a">
