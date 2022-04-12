@@ -1,7 +1,7 @@
 package GUI;
 
 import DB.DatabaseConnection;
-import System.StockControlSystem;
+import System.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,6 +27,7 @@ public class ForepersonPanel extends JDialog {
     int x = 0;
 
     public ForepersonPanel() {
+        Main.updateMain("ForePersonPanel");
         //testIDslot();
 
 //        super(parent);
@@ -35,6 +36,20 @@ public class ForepersonPanel extends JDialog {
         setMinimumSize(new Dimension(1290, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
+            }
+        });
         setVisible(true);
     }
 

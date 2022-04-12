@@ -1,5 +1,7 @@
 package GUI;
 
+import System.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,6 +22,7 @@ public class SearchJob extends JDialog{
     private int Carnumber;
 
     public SearchJob() {
+        Main.updateMain("SearchJob");
         //testIDslot();
 
 //        super(parent);
@@ -36,6 +39,21 @@ public class SearchJob extends JDialog{
                 //test();
             }
         });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
+            }
+        });
+
         setVisible(true);
     }
 

@@ -11,8 +11,7 @@ public class Main {
     final static String[] roles = {"Admin", "Foreperson", "Franchisee", "Mechanic", "Receptionist"};
     private static String role;
     private static StockControlSystem scs;
-    private static String currentpage;
-    private static String backpage;
+    private static String backpage = "";
 
     public static void setRole(String rl){ role = rl; }
     public static String getRole(){ return role; }
@@ -24,8 +23,7 @@ public class Main {
     }
 
     public static void updateMain(String newpage){
-        backpage = currentpage;
-        currentpage = newpage;
+        backpage = newpage;
     }
     public static void backPage(){
         if(backpage.equals("AdminPanel")){ AdminPanel a = new AdminPanel(); }
@@ -45,6 +43,7 @@ public class Main {
         else{
             System.out.println("Pagename not correct, page = " + backpage);
         }
+        System.out.println(backpage);
     }
 
     public static StockControlSystem getSCS(){ return scs; }

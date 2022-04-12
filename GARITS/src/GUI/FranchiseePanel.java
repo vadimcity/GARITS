@@ -1,12 +1,11 @@
 package GUI;
 
-import DB.DatabaseConnection;
+import System.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class FranchiseePanel extends JDialog{
     private JTable table1;
@@ -18,8 +17,10 @@ public class FranchiseePanel extends JDialog{
 
     private JPanel franchiseePanel;
     private JButton applyButton;
+    private JButton backButton;
 
     public FranchiseePanel() {
+        Main.updateMain("FranchiseePanel");
         //testIDslot();
 
 //        super(parent);
@@ -28,6 +29,13 @@ public class FranchiseePanel extends JDialog{
         setMinimumSize(new Dimension(650, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

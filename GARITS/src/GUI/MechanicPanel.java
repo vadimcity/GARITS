@@ -1,7 +1,7 @@
 package GUI;
 
 import DB.DatabaseConnection;
-import System.StockControlSystem;
+import System.*;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
@@ -40,6 +40,7 @@ public class MechanicPanel extends JDialog {
     private JTable table1;
 
     public MechanicPanel() {
+        Main.updateMain("MechanicPanel");
         //testIDslot();
 
 //        super(parent);
@@ -54,6 +55,20 @@ public class MechanicPanel extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "button pressed");
                 fillform();
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
             }
         });
         setVisible(true);

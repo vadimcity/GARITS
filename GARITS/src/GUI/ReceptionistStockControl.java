@@ -1,7 +1,11 @@
 package GUI;
 
+import System.Main;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ReceptionistStockControl extends JDialog{
     private JButton backButton;
@@ -15,6 +19,7 @@ public class ReceptionistStockControl extends JDialog{
     private JPanel receptionistStockControl;
 
     public ReceptionistStockControl() {
+        Main.updateMain("ReceptionistStockControl");
         //testIDslot();
 
 //        super(parent);
@@ -23,6 +28,21 @@ public class ReceptionistStockControl extends JDialog{
         setMinimumSize(new Dimension(1290, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
+            }
+        });
+
         setVisible(true);
     }
 

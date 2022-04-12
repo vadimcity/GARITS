@@ -32,6 +32,7 @@ public class ReceptionistPanel extends JDialog{
     private StockControlSystem scs;
 
     public ReceptionistPanel() {
+        Main.updateMain("ReceptionistPanel");
         //testIDslot();
 
 //        super(parent);
@@ -52,7 +53,20 @@ public class ReceptionistPanel extends JDialog{
                 createCustomerRecord();
             }
         });
-
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
+            }
+        });
         setVisible(true);
     }
 

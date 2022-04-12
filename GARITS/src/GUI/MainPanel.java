@@ -23,6 +23,7 @@ public class MainPanel extends JDialog {
     private int roleno;
 
     public MainPanel() {
+        Main.updateMain("MainPanel");
 //        super(parent);
         setTitle("MainPanel");
         setContentPane(mainPanel);
