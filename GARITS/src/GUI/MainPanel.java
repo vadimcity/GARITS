@@ -27,7 +27,7 @@ public class MainPanel extends JDialog {
 //        super(parent);
         setTitle("MainPanel");
         setContentPane(mainPanel);
-        setMinimumSize(new Dimension(500, 220));
+        setMinimumSize(new Dimension(600, 220));
         //setIconImage(image.getImage());
         //getContentPane().setBackground(new Color(51, 172, 159));
         //getContentPane().setBackground(Color.CYAN);
