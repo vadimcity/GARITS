@@ -64,19 +64,19 @@ public class CarPanel extends JDialog{
             if (!registerNoTextField.getText().isEmpty()) {
                 DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET registerNo = '"+ registerNo +"' WHERE carID='" +carID+"';");
             }
-            if (!makeTextField.getText().isEmpty()) {
+            else if (!makeTextField.getText().isEmpty()) {
                 DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET make = '"+ make +"' WHERE carID='" +carID+"';");
             }
-            if (!engineTextField.getText().isEmpty()) {
+            else if (!engineTextField.getText().isEmpty()) {
                 DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET engineSerial = '"+ engineSerial +"' WHERE carID='" +carID+"';");
             }
-            if (!chassisNoTextField.getText().isEmpty()) {
+            else if (!chassisNoTextField.getText().isEmpty()) {
                 DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET chassisNo = '"+ chassisNo +"' WHERE carID='" +carID+"';");
             }
-            if (!colourTextField.getText().isEmpty()) {
+            else if (!colourTextField.getText().isEmpty()) {
                 DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET colour = '"+ colour +"' WHERE carID='" +carID+"';");
             }
-            if (!customerIDTextField.getText().isEmpty()) {
+            else if (!customerIDTextField.getText().isEmpty()) {
                 DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET customerID = '"+ customerID +"' WHERE carID='" +carID+"';");
             }
             else {

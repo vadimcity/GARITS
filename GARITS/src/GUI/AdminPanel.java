@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static DB.DatabaseConnection.*;
 
@@ -68,7 +69,7 @@ public class AdminPanel extends JDialog {
                     System.out.println("ENTER USERNAME");
                 }
                 else
-                alterAccount(textFieldUsername.getText(),textFieldEmail.getText(),passwordField.toString(),roleBox.getSelectedItem().toString());
+                alterAccount(textFieldUsername.getText(),textFieldEmail.getText(),passwordField.toString(),roleBox.getSelectedItem());
             }
         });
         databaseButton.addActionListener(new ActionListener() {
@@ -140,17 +141,18 @@ public class AdminPanel extends JDialog {
         System.out.println("Sent.");
     }
 
-    public void alterAccount(String username,String email,String password, String role){
+    public void alterAccount(String username,String email,String password, Object role){
+        String x = String.valueOf(role);
         if(!textFieldEmail.getText().isEmpty()) {
             DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET email ='"+ email + "' WHERE username='" +username+"';");
             //SQL STATEMENT TO CHANGE EMAIL ADDRESS
         }
-        if(!(passwordField.getPassword().length == 0)) {
+        else if(!(passwordField.getPassword().length == 0)) {
             DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET password = '"+ password +"' WHERE username='" +username+"';");
             //SQL STATEMENT TO CHANGE PASSWORD
         }
-        if (roleBox.getSelectedItem().toString() != "ChooseRole") {
-            DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET role = '"+ role +"' WHERE username='" +username+"';");
+        else if (!Objects.equals(role, "ChooseRole")) {
+            DatabaseConnection.databaseAffectTemplate("UPDATE useraccounts SET user_role = '"+ x +"' WHERE username='" +username+"';");
             //SQL STATEMENT TO CHANGE ROLE
         }
         else {

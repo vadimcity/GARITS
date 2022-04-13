@@ -84,13 +84,14 @@ public class MechanicPanel extends JDialog {
             PDDocumentCatalog docCatalog = pdfDoc.getDocumentCatalog();
             PDAcroForm acroForm = docCatalog.getAcroForm();
 
-            PDField jobNo = acroForm.getField("jobNo");
-            jobNo.setValue("7862");
+            PDField hours = acroForm.getField("hours");
+            String timeTaken = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist WHERE jobID='3259';","timeTaken"));
+            hours.setValue(timeTaken);
             System.out.println("value set");
             /*make the final document uneditable*/
             acroForm.flatten();
             /*generate a new pdf file and save it to the given location*/
-            pdfDoc.save(new File("./jobSheets/3.pdf"));
+            pdfDoc.save(new File("./jobSheets/5.pdf"));
 
         } catch (IOException e) {
             e.printStackTrace();
