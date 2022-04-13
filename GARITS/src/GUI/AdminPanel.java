@@ -49,14 +49,6 @@ public class AdminPanel extends JDialog {
             e.printStackTrace();
         }
 //        setLocationRelativeTo(parent);
-
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                dispose();
-                Login login = new Login();
-            }
-        });
         createUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -115,14 +107,14 @@ public class AdminPanel extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                Main.backPage();
+                Login l = new Login();
             }
         });
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                Login l = new Login();
+                Main.backPage();
             }
         });
         setVisible(true);
