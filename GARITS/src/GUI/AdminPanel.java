@@ -2,12 +2,14 @@ package GUI;
 
 import DB.BackupUI;
 import DB.DatabaseConnection;
+import System.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -29,11 +31,13 @@ public class AdminPanel extends JDialog {
     private JButton logoutButton;
     private JButton databaseButton;
     private JButton updatedButton;
+    private JButton backButton;
     private JLabel dateField;
     private JTextField textField1;
     private JButton backupButton;
 
     public AdminPanel() {
+        Main.updateMain("AdminPanel");
 //        super(parent);
         setTitle("Admin Panel");
         setContentPane(adminPanel);
@@ -101,13 +105,27 @@ public class AdminPanel extends JDialog {
                 updatedButton.setText("NEWDATE"); //Update list and update button text to show date.
             }
         });
-        setVisible(true);
         deleteUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteAccount(textFieldUsername.getText());
             }
         });
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
+            }
+        });
+        setVisible(true);
     }
 
     private void tableIN() throws FileNotFoundException {

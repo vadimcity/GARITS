@@ -1,6 +1,7 @@
 package GUI;
 
 import DB.DatabaseConnection;
+import System.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +26,7 @@ public class CarPanel extends JDialog{
     private JTextField colourTextField;
 
     public CarPanel() {
+        Main.updateMain("CarPanel");
 //        testIDslot();
 
 //        super(parent);
@@ -49,6 +51,20 @@ public class CarPanel extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 editCar(carIDTextField.getText(),registerNoTextField.getText(),makeTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),colourTextField.getText(),customerIDTextField.getText());
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Main.backPage();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login l = new Login();
             }
         });
         setVisible(true);

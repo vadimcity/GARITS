@@ -34,7 +34,7 @@
           <text value="Log Out"/>
         </properties>
       </component>
-      <component id="e21e5" class="javax.swing.JTextField" binding="typeTextField" default-binding="true">
+      <component id="e21e5" class="javax.swing.JTextField" binding="type1">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -44,7 +44,7 @@
           <text value="Type"/>
         </properties>
       </component>
-      <component id="28ef2" class="javax.swing.JTextField" binding="typeTextField1" default-binding="true">
+      <component id="28ef2" class="javax.swing.JTextField" binding="type2">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -54,7 +54,7 @@
           <text value="Type"/>
         </properties>
       </component>
-      <component id="26640" class="javax.swing.JTextField" binding="typeTextField2" default-binding="true">
+      <component id="26640" class="javax.swing.JTextField" binding="type3">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -64,7 +64,7 @@
           <text value="Type"/>
         </properties>
       </component>
-      <component id="a5467" class="javax.swing.JTextField" default-binding="true">
+      <component id="a5467" class="javax.swing.JTextField" binding="amount1">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -74,7 +74,7 @@
           <text value="Amount"/>
         </properties>
       </component>
-      <component id="c005b" class="javax.swing.JTextField" default-binding="true">
+      <component id="c005b" class="javax.swing.JTextField" binding="amount2">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -84,7 +84,7 @@
           <text value="Amount"/>
         </properties>
       </component>
-      <component id="d6a13" class="javax.swing.JTextField" default-binding="true">
+      <component id="d6a13" class="javax.swing.JTextField" binding="newPrice">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -102,7 +102,7 @@
           <text value="Order Parts"/>
         </properties>
       </component>
-      <component id="92b39" class="javax.swing.JButton" default-binding="true">
+      <component id="92b39" class="javax.swing.JButton" binding="sellSpareParts">
         <constraints>
           <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -110,7 +110,7 @@
           <text value="Sell Spare Parts"/>
         </properties>
       </component>
-      <component id="a61d8" class="javax.swing.JButton" default-binding="true">
+      <component id="a61d8" class="javax.swing.JButton" binding="changePrice">
         <constraints>
           <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
