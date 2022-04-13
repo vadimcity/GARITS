@@ -45,7 +45,7 @@
           <text value="Apply"/>
         </properties>
       </component>
-      <component id="9cc5b" class="javax.swing.JRadioButton" default-binding="true">
+      <component id="9cc5b" class="javax.swing.JRadioButton" binding="payLate">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

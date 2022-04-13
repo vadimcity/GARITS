@@ -1,5 +1,6 @@
 package GUI;
 
+import DB.DatabaseConnection;
 import System.Main;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class FranchiseePanel extends JDialog{
     private JPanel franchiseePanel;
     private JButton applyButton;
     private JButton backButton;
+    private JRadioButton payLate;
 
     public FranchiseePanel() {
         Main.updateMain("FranchiseePanel");
@@ -68,7 +70,21 @@ public class FranchiseePanel extends JDialog{
     }
 
     public void apply(){
+        if(comboBox1.getSelectedIndex() != 0){ alterDiscountPlan();}
+        if(payLate.isSelected()){
+            payLateOption(true);
+        }
+    }
 
+    //setDiscountPlan was subsumed by alterDiscountPlan
+    public void alterDiscountPlan(){
+        //can be fixed, variable or flexible
+        DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Discountplan='" + comboBox1.getSelectedItem() + "' WHERE ID='" + customerIDTextField + "'");
+    }
+
+    public void payLateOption(boolean plo){ // customer account holders can have a pay late option. Set it to true or false
+        // update pay late option to plo
+        DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Discountplan='" + plo + "' WHERE ID='" + customerIDTextField + "'");
     }
 
     public static void main(String[] args) {
