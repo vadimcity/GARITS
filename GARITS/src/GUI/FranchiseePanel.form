@@ -22,8 +22,10 @@
         </constraints>
         <properties>
           <model>
+            <item value="Discount Type"/>
             <item value="Fixed"/>
-            <item value="..................."/>
+            <item value="Variable"/>
+            <item value="Flexible"/>
           </model>
         </properties>
       </component>
