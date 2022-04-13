@@ -139,6 +139,95 @@ public class DatabaseConnection {
     }
 
 
+    /* public static String[][] databaseReturnTable(String sql) {
+        //String example = "SELECT username, firstname FROM useraccounts";
+        String s = "";
+        int rows;
+        String[][] stringarray;
+
+        try(Connection conn = DriverManager.getConnection(database_url, mysqlUser, mysqlPassword);
+            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ) {
+            ResultSet rs = stmt.executeQuery(sql);
+            ResultSetMetaData rsmd=rs.getMetaData();
+
+            //find number of rows,      columns = rsmd.getColumnCount()
+            rs.last();
+            rows = rs.getRow();
+            rs.beforeFirst();
+
+            stringarray = new String[rows+1][rsmd.getColumnCount()];
+
+            System.out.println("Columncount = " + rsmd.getColumnCount());
+
+            for(int i = 0; i<rsmd.getColumnCount();i++){
+                stringarray[0][i] = rsmd.getColumnName(i);
+                rs.getRow();
+                System.out.println("i = " + i);
+            }
+            for(int i = 1; i< (rows + 1);i++){
+                for(int j = 0; j<rsmd.getColumnCount();j++) {
+                    stringarray[i][j] = rs.getString(rsmd.getColumnName(j));
+                }
+                rs.next();
+            }
+            return stringarray;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            stringarray = new String[0][0];
+            System.out.println("databaseReturnTable: Failure");
+            return stringarray;
+        }
+    } */
+
+    public static String[][] databaseReturnTable(String sql) {
+        System.out.println("Hello?");
+        //String example = "SELECT username, firstname FROM useraccounts";
+        String s = "";
+        int rows;
+        String[][] stringarray;
+
+        try(Connection conn = DriverManager.getConnection(database_url, mysqlUser, mysqlPassword);
+            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            //Statement stmt = conn.createStatement();
+        ) {
+            ResultSet rs = stmt.executeQuery(sql);
+            ResultSetMetaData rsmd=rs.getMetaData();
+
+            //find number of rows,      columns = rsmd.getColumnCount()
+            rs.last();
+            rows = rs.getRow();
+            rs.beforeFirst();
+
+            stringarray = new String[rows+1][rsmd.getColumnCount()];
+
+            System.out.println("Columncount = " + rsmd.getColumnCount());
+
+            for(int i = 0; i<=rsmd.getColumnCount();i++){
+                stringarray[0][i] = rsmd.getColumnName(i);
+                rs.getRow();
+                System.out.println("i = " + i);
+            }
+            for(int i = 1; i< (rows + 1);i++){
+                for(int j = 0; j<rsmd.getColumnCount();j++) {
+                    stringarray[i][j] = rs.getString(rsmd.getColumnName(j));
+                }
+                rs.next();
+            }
+            return stringarray;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            stringarray = new String[0][0];
+            System.out.println("databaseReturnTable: Failure");
+            return stringarray;
+        }
+    }
+
+
 /*
     //send a query to the database and get a boolean in return
     //public static boolean databaseReturnBool(String sql){

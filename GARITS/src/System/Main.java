@@ -22,6 +22,23 @@ public class Main {
         return false;
     }
 
+    public static String[] convertToColumns(String[][] s){
+        String[] columns = new String[s[0].length];
+        for (int i = 0; i < s[0].length; i++){  columns[i] = s[0][i]; }
+        return columns;
+    }
+    //columns holds names of columns, from the first row            s.length = rows, s[0].length = columns
+    public static String[][] convertToPureData(String[][] s){
+        String[][] data = new String[s.length-1][s[0].length];
+        for (int i = 1; i < s.length; i++){
+            for (int j = 0; j < s[0].length; j++){
+                data[i-1][j] = s[i][j];
+                System.out.println(data[i-1][j]);
+            }
+        }
+        return data;
+    }
+
     public static void updateMain(String newpage){
         backpage = newpage;
     }
