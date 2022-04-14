@@ -56,13 +56,6 @@ public class MechanicPanel extends JDialog {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "button pressed");
-                fillform();
-            }
-        });
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
                 dispose();
                 Main.backPage();
             }
@@ -72,6 +65,13 @@ public class MechanicPanel extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 Login l = new Login();
+            }
+        });
+
+        fillJobSheetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fillJobSheet(jobIDTextField.getText());
             }
         });
         setVisible(true);
@@ -115,7 +115,90 @@ public class MechanicPanel extends JDialog {
             e.printStackTrace();
         }
     }
-    public void fillJobSheet(){
+    public void fillJobSheet(String jobID){
+        InputStream input = null;
+
+        String timeTaken = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist WHERE jobID='"+jobID+"';","timeTaken"));
+        String vehicleReg = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist INNER JOIN vehicle ON joblist.vehicleID=vehicle.vehicleID WHERE jobID='"+jobID+"';","regNumber"));
+        String make = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist INNER JOIN vehicle ON joblist.vehicleID=vehicle.vehicleID WHERE jobID='"+jobID+"';","brand"));
+        String model = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist INNER JOIN vehicle ON joblist.vehicleID=vehicle.vehicleID WHERE jobID='"+jobID+"';","model"));
+
+        String vehicleID = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist INNER JOIN vehicle ON joblist.vehicleID=vehicle.vehicleID WHERE jobID='"+jobID+"';","vehicleID"));
+        String name = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM vehicle INNER JOIN customermemberlist ON vehicle.ID=customermemberlist.ID WHERE vehicleID='"+vehicleID+"';","Name"));
+        String tel = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM vehicle INNER JOIN customermemberlist ON vehicle.ID=customermemberlist.ID WHERE vehicleID='"+vehicleID+"';","TelephoneNo"));
+
+
+        String dateBooked = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist INNER JOIN booking ON joblist.bookingID=booking.bookingID WHERE jobID='"+jobID+"';","dateBooked"));
+        String descOfWork1 = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM joblist INNER JOIN booking ON joblist.bookingID=booking.bookingID WHERE jobID='"+jobID+"';","descriptionOfWork"));
+
+        String partNo1 = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM Parts INNER JOIN joblist ON Parts.jobID = joblist.jobID WHERE Parts.jobID='"+jobID+"';","partNumber"));
+        String part1Desc = (DatabaseConnection.databaseReturnIndivString("SELECT * FROM Parts INNER JOIN joblist ON Parts.jobID = joblist.jobID WHERE Parts.jobID='"+jobID+"';","partName"));
+
+
+        try {
+            input = new FileInputStream(new File("./jobsheetForm.pdf"));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        try (PDDocument pdfDoc = Loader.loadPDF(input);) {
+            System.out.println("loaded");
+            PDDocumentCatalog docCatalog = pdfDoc.getDocumentCatalog();
+            PDAcroForm acroForm = docCatalog.getAcroForm();
+
+            PDField jobIDAcro = acroForm.getField("jobNo");
+            PDField hours = acroForm.getField("hours");
+            PDField vehicleRegPlate = acroForm.getField("vehicleReg");
+            PDField brand = acroForm.getField("make");
+            PDField modelAcro = acroForm.getField("Model");
+            PDField customerName = acroForm.getField("customerName");
+            PDField telAcro = acroForm.getField("telephone");
+
+
+
+            PDField descOfWork1Acro = acroForm.getField("descOfWork1");
+            PDField dateBookedAcro = acroForm.getField("dateBookedIn");
+
+            PDField partNumber1Acro = acroForm.getField("partNo1");
+            PDField partNumber1DescAcro = acroForm.getField("desc1");
+            PDField qty1 = acroForm.getField("qty1");
+            jobIDAcro.setValue(jobID);
+            hours.setValue(timeTaken);
+            vehicleRegPlate.setValue(vehicleReg);
+            brand.setValue(make);
+            modelAcro.setValue(model);
+            dateBookedAcro.setValue(dateBooked);
+            descOfWork1Acro.setValue(descOfWork1);
+            customerName.setValue(name);
+            telAcro.setValue(tel);
+
+            partNumber1Acro.setValue(partNo1);
+            partNumber1DescAcro.setValue(part1Desc);
+            if (!partNo1.isEmpty()) {
+                qty1.setValue("1");
+            }
+
+
+
+
+
+
+
+
+
+            System.out.println("value set");
+
+
+
+
+
+            /*make the final document uneditable*/
+            acroForm.flatten();
+            /*generate a new pdf file and save it to the given location*/
+            pdfDoc.save(new File("./jobSheets/"+jobID+".pdf"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void printTheJobSheet(){
     }
