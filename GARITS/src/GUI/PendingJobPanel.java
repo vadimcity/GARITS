@@ -30,7 +30,7 @@ public class PendingJobPanel extends JDialog{
         setMinimumSize(new Dimension(1290, 300));
         setModal(true);
         //displayTable("SELECT * FROM joblist WHERE jobstatus='inactive'");
-        displayTable("SELECT * FROM useraccounts");
+        displayTable("SELECT * FROM joblist WHERE jobstatus='inactive'");
 //        setLocationRelativeTo(parent);
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -60,8 +60,14 @@ public class PendingJobPanel extends JDialog{
         int selectedRow = table1.getSelectedRow();
         System.out.println("Row = " + selectedRow);
         System.out.println("Selected = " + table1.getValueAt(selectedRow,0));
-        //get jobid of selected row
+        //get jobid of selected row and the mechanic username
         table1.getValueAt(selectedRow,0);
+        table1.getValueAt(selectedRow,4);
+        DatabaseConnection.databaseAffectTemplate("UPDATE joblist SET jobstatus='active', " +
+                "username='" + table1.getValueAt(selectedRow,4) +
+                "' WHERE jobid='" + table1.getValueAt(selectedRow,0) + "'");
+        dispose();
+        Main.backPage();
     }
 
     public void displayTable(String sql){
