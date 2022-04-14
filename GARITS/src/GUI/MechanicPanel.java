@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class MechanicPanel extends JDialog {
     private JButton fillJobSheetButton;
     private JButton pickNewJobButton;
     private JTable table1;
+    private JScrollPane jsp;
 
     public MechanicPanel() {
         Main.updateMain("MechanicPanel");
@@ -48,6 +50,7 @@ public class MechanicPanel extends JDialog {
         setContentPane(mechanicPanel);
         setMinimumSize(new Dimension(1290, 300));
         setModal(true);
+        displayTable("SELECT * FROM joblist WHERE username='John'");
 //        setLocationRelativeTo(parent);
 
         backButton.addActionListener(new ActionListener() {
@@ -118,6 +121,15 @@ public class MechanicPanel extends JDialog {
     }
 
     public void getParts () { scs.getParts(); }
+
+    public void displayTable(String sql){
+        String[][] s = DatabaseConnection.databaseReturnTable(sql);
+
+        String[] columns = Main.convertToColumns(s);
+        String[][] data = Main.convertToPureData(s);
+
+        table1.setModel(new DefaultTableModel(data, columns));
+    }
 
     public static void main(String[] args) {
         MechanicPanel mymp = new MechanicPanel();

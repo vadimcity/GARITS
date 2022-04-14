@@ -4,6 +4,7 @@ import DB.DatabaseConnection;
 import System.Main;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ public class FranchiseePanel extends JDialog{
     private JButton applyButton;
     private JButton backButton;
     private JRadioButton payLate;
+    private JScrollPane jsp;
 
     public FranchiseePanel() {
         Main.updateMain("FranchiseePanel");
@@ -30,6 +32,7 @@ public class FranchiseePanel extends JDialog{
         setContentPane(franchiseePanel);
         setMinimumSize(new Dimension(650, 300));
         setModal(true);
+        displayTable("SELECT * FROM customermemberlist");
 //        setLocationRelativeTo(parent);
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -85,6 +88,15 @@ public class FranchiseePanel extends JDialog{
     public void payLateOption(boolean plo){ // customer account holders can have a pay late option. Set it to true or false
         // update pay late option to plo
         DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Discountplan='" + plo + "' WHERE ID='" + customerIDTextField + "'");
+    }
+
+    public void displayTable(String sql){
+        String[][] s = DatabaseConnection.databaseReturnTable(sql);
+
+        String[] columns = Main.convertToColumns(s);
+        String[][] data = Main.convertToPureData(s);
+
+        table1.setModel(new DefaultTableModel(data, columns));
     }
 
     public static void main(String[] args) {

@@ -5,16 +5,13 @@ import DB.DatabaseConnection;
 import System.Main;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Objects;
-
-import static DB.DatabaseConnection.*;
 
 public class AdminPanel extends JDialog {
 
@@ -32,6 +29,7 @@ public class AdminPanel extends JDialog {
     private JButton databaseButton;
     private JButton updatedButton;
     private JButton backButton;
+    private JScrollPane jsp;
     private JLabel dateField;
     private JTextField textField1;
     private JButton backupButton;
@@ -48,6 +46,9 @@ public class AdminPanel extends JDialog {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        defaultDisplayTable();
+
 //        setLocationRelativeTo(parent);
         createUserButton.addActionListener(new ActionListener() {
             @Override
@@ -149,6 +150,7 @@ public class AdminPanel extends JDialog {
         DatabaseConnection.databaseAffectTemplate(
                 "INSERT INTO useraccounts VALUES ('" + username + "', NULL, NULL, '" + password + "', NULL,  '" + role + "')");
         System.out.println("Sent.");
+        defaultDisplayTable();
     }
 
     public void alterAccount(String username,String email,String password, Object role){
@@ -168,10 +170,23 @@ public class AdminPanel extends JDialog {
         else {
             System.out.println("ERROR");
         }
+        defaultDisplayTable();
    }
 
     public void deleteAccount(String username){
         DatabaseConnection.databaseAffectTemplate("DELETE FROM useraccounts WHERE username='" + username + "';");
+        defaultDisplayTable();
+    }
+
+
+    public void defaultDisplayTable(){ displayTable("SELECT * FROM useraccounts"); }
+    public void displayTable(String sql){
+        String[][] s = DatabaseConnection.databaseReturnTable(sql);
+
+        String[] columns = Main.convertToColumns(s);
+        String[][] data = Main.convertToPureData(s);
+
+        table1.setModel(new DefaultTableModel(data, columns));
     }
 
 
