@@ -49,6 +49,7 @@ public class Login extends JDialog {
 //                Main.newpanel();
                 //AdminPanel AP = new AdminPanel();
                 MainPanel mp = new MainPanel();
+                if(Main.getRole() == "Mechanic"){ Main.setMechanicUsername(textField1.getText()); }
             } else {
                 JOptionPane.showMessageDialog(null, "Username or Password incorrect");
                 textField1.setText("");

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Main {
     final static String[] roles = {"Admin", "Foreperson", "Franchisee", "Mechanic", "Receptionist"};
     private static String role;
+    private static String mechun;
     private static StockControlSystem scs;
     private static String backpage = "";
 
@@ -21,6 +22,9 @@ public class Main {
         }
         return false;
     }
+
+    public static void setMechanicUsername(String un){ mechun = un; }
+    public static String getMechanicUsername(){ return mechun; }
 
     public static String[] convertToColumns(String[][] s){
         String[] columns = new String[s[0].length];

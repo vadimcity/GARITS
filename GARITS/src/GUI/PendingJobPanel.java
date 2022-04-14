@@ -62,10 +62,9 @@ public class PendingJobPanel extends JDialog{
         System.out.println("Selected = " + table1.getValueAt(selectedRow,0));
         //get jobid of selected row and the mechanic username
         table1.getValueAt(selectedRow,0);
-        table1.getValueAt(selectedRow,4);
+        String mechanicusername = Main.getMechanicUsername();
         DatabaseConnection.databaseAffectTemplate("UPDATE joblist SET jobstatus='active', " +
-                "username='" + table1.getValueAt(selectedRow,4) +
-                "' WHERE jobid='" + table1.getValueAt(selectedRow,0) + "'");
+                "username='" + mechanicusername + "' WHERE jobid='" + table1.getValueAt(selectedRow,0) + "'");
         dispose();
         Main.backPage();
     }
