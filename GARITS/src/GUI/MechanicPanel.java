@@ -32,14 +32,14 @@ public class MechanicPanel extends JDialog {
     private JTextField minutesTextField;
     private JTextField secondsTextField;
     private JButton changeDurationOfJobButton;
-    private JButton jobIDButton;
-    private JButton typeButton;
-    private JButton amountButton;
     private JButton getPartsButton;
     private JButton fillJobSheetButton;
     private JButton pickNewJobButton;
     private JTable table1;
     private JScrollPane jsp;
+    private JTextField jobIDTextField1;
+    private JTextField typeTextField;
+    private JTextField amountTextField;
 
     public MechanicPanel() {
         Main.updateMain("MechanicPanel");
@@ -74,6 +74,14 @@ public class MechanicPanel extends JDialog {
                 fillJobSheet(jobIDTextField.getText());
             }
         });
+        pickNewJobButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                PendingJobPanel p = new PendingJobPanel();
+            }
+        });
+
         setVisible(true);
     }
 

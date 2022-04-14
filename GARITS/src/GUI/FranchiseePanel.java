@@ -91,6 +91,7 @@ public class FranchiseePanel extends JDialog{
     }
 
     public void displayTable(String sql){
+
         String[][] s = DatabaseConnection.databaseReturnTable(sql);
 
         String[] columns = Main.convertToColumns(s);
