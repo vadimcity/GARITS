@@ -24,6 +24,7 @@ public class CarPanel extends JDialog{
     private JTextField chassisNoTextField;
     private JTextField modelTextField;
     private JTextField colourTextField;
+    private JTextField yearTextField;
 
     public CarPanel() {
         Main.updateMain("CarPanel");
@@ -44,13 +45,13 @@ public class CarPanel extends JDialog{
         addCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addCar(registerNoTextField.getText(),makeTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),colourTextField.getText(),customerIDTextField.getText());
+                addCar(makeTextField.getText(),modelTextField.getText(),yearTextField.getText(),colourTextField.getText(),registerNoTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),customerIDTextField.getText());
             }
         });
         editCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                editCar(carIDTextField.getText(),registerNoTextField.getText(),makeTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),colourTextField.getText(),customerIDTextField.getText());
+                editCar(carIDTextField.getText(),registerNoTextField.getText(),makeTextField.getText(),modelTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),colourTextField.getText(),yearTextField.getText(),customerIDTextField.getText());
             }
         });
         backButton.addActionListener(new ActionListener() {
@@ -70,30 +71,36 @@ public class CarPanel extends JDialog{
         setVisible(true);
     }
         public void removeCar(String carID) {
-            DatabaseConnection.databaseAffectTemplate("DELETE FROM vehicles WHERE vehicleID='" + carID + "';");
+            DatabaseConnection.databaseAffectTemplate("DELETE FROM vehicle WHERE vehicleID='" + carID + "';");
     }
-        public void addCar(String registerNo, String make, String engineSerial, String chassisNo, String colour, String customerID ) {
-            DatabaseConnection.databaseAffectTemplate("INSERT INTO vehicles(registerNo, make, engineSerial, chassisNo, colour, customerID)\n" +
-                    "VALUES ('"+registerNo+"','"+ make +"','"+engineSerial+"','"+chassisNo+"','"+colour+"','"+customerID+"');");
+        public void addCar(String make, String model,String year, String colour, String registerNo, String engineSerial, String chassisNo, String customerID ) {
+            DatabaseConnection.databaseAffectTemplate("INSERT INTO vehicle(regNumber, brand, model, engineSerial, chassisNumber, colour, year, ID)\n" +
+                    "VALUES ('"+registerNo+"','"+ make +"','"+ model +"','"+engineSerial+"','"+chassisNo+"','"+colour+"','"+year+"','"+customerID+"');");
         }
-        public void editCar(String carID, String registerNo, String make, String engineSerial, String chassisNo, String colour, String customerID)  {
+        public void editCar(String carID, String registerNo, String make,String model, String engineSerial, String chassisNo, String colour,String year, String customerID)  {
             if (!registerNoTextField.getText().isEmpty()) {
-                DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET registerNo = '"+ registerNo +"' WHERE carID='" +carID+"';");
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET registerNo = '"+ registerNo +"' WHERE carID='" +carID+"';");
             }
             else if (!makeTextField.getText().isEmpty()) {
-                DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET make = '"+ make +"' WHERE carID='" +carID+"';");
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET brand = '"+ make +"' WHERE carID='" +carID+"';");
+            }
+            else if (!modelTextField.getText().isEmpty()) {
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET model = '"+ model +"' WHERE carID='" +carID+"';");
             }
             else if (!engineTextField.getText().isEmpty()) {
-                DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET engineSerial = '"+ engineSerial +"' WHERE carID='" +carID+"';");
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET engineSerial = '"+ engineSerial +"' WHERE carID='" +carID+"';");
             }
             else if (!chassisNoTextField.getText().isEmpty()) {
-                DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET chassisNo = '"+ chassisNo +"' WHERE carID='" +carID+"';");
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET chassisNo = '"+ chassisNo +"' WHERE carID='" +carID+"';");
             }
             else if (!colourTextField.getText().isEmpty()) {
-                DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET colour = '"+ colour +"' WHERE carID='" +carID+"';");
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET colour = '"+ colour +"' WHERE carID='" +carID+"';");
+            }
+            else if (!yearTextField.getText().isEmpty()) {
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET year = '"+ year +"' WHERE carID='" +carID+"';");
             }
             else if (!customerIDTextField.getText().isEmpty()) {
-                DatabaseConnection.databaseAffectTemplate("UPDATE vehicles SET customerID = '"+ customerID +"' WHERE carID='" +carID+"';");
+                DatabaseConnection.databaseAffectTemplate("UPDATE vehicle SET ID = '"+ customerID +"' WHERE carID='" +carID+"';");
             }
             else {
                 System.out.println("ERROR");

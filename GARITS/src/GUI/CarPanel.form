@@ -139,6 +139,17 @@
         </constraints>
         <properties/>
       </component>
+      <component id="26481" class="javax.swing.JTextField" binding="yearTextField">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Year"/>
+          <toolTipText value="enter in format 2016,2019"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
