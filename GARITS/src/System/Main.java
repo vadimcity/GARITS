@@ -40,6 +40,32 @@ public class Main {
         return data;
     }
 
+    public static int IDSlotIn(ArrayList<Integer> al, int min){
+        int x;
+        int count = 0;
+        boolean foundspace = false;
+        //find a free slot
+        for (int i = 0; i < al.size(); i++) {
+            for (int j = 0; j < al.size(); j++) {
+                if ((al.get(i)+1) == al.get(j)) { count++; }
+            }
+            if(count == 0){ return al.get(i)+1; }
+            count = 0;
+        }
+        //no slots, so add 1 to maximum
+        x = IDmax(al,0) + 1;
+        //if >= 10000, then we don't want an ID of that size. If there are both no slots AND max+1 >= 10000, then that means all IDs are bunched up near the top, leaving 0 free
+        // if they were bunched at the top and bottom, even if al.get(al.size()) were about 3, 4 would be considered a free slot
+        if(x >= 10000){ x = 0; }
+        return x;
+    }
+    public static int IDmax(ArrayList<Integer> al, int min){
+        for (int i = 0; i < al.size(); i++) {
+            if(al.get(i) > min){ min = al.get(i); }
+        }
+        return min;
+    }
+
     public static void updateMain(String newpage){
         backpage = newpage;
     }

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class CreateAlterAccountHolder extends JDialog{
     private JButton backButton;
@@ -25,6 +26,21 @@ public class CreateAlterAccountHolder extends JDialog{
     private JTextField postCodeText;
     private JTextField telephoneNo;
     private JTextField emailText;
+
+    int custID;
+    String date;
+    String name;
+    String address;
+    String postcode;
+    int telephoneNumber;
+    String email;
+    String regno;
+    String make;
+    String model;
+    String eng_serial;
+    String chassisNumber;
+    String colour;
+    String discountplan;
 
     public CreateAlterAccountHolder() {
         Main.updateMain("CreateAlterAccountHolder");
@@ -85,14 +101,58 @@ public class CreateAlterAccountHolder extends JDialog{
         setVisible(true);
     }
 
+    private void update(){
+        if(!(customerIDTextField.getText().isEmpty() || (customerIDTextField.getText().equals("CustomerID")))){ custID = Integer.parseInt(customerIDTextField.getText()); }
+        date = dateTextField.getText();
+        name = nameText.getText();
+        address = addressTextField.getText();
+        postcode = postCodeText.getText();
+        if(!(telephoneNo.getText().isEmpty() || (telephoneNo.getText().equals("Telephone No.")))){ telephoneNumber = Integer.parseInt(telephoneNo.getText()); }
+        email = emailText.getText();
+        //regno = regn;
+        //String make;
+        //String model;
+        //String eng_serial;
+        //String chassisNumber;
+        //String colour;
+        discountplan = (String) comboBox1.getSelectedItem();
+    }
+
     private void enabling(JButton b){ b.setEnabled(true); b.setFocusable(true); }
     private void disabling(JButton b){ b.setEnabled(false); b.setFocusable(false); }
 
     public void createAccountHolder() {
-        if(testEmpty()){
-            DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + dateTextField + "', '" + nameText + "', '" + addressTextField
-                    + "', '" + postCodeText + "', '" + telephoneNo + "', '" + emailText + "', '" + comboBox1.getSelectedItem() + "')");
+        update();
+        ArrayList<Integer> al = DatabaseConnection.databaseReturnInt("SELECT * FROM customermemberlist", "ID");
+        int JobID = Main.IDSlotIn(al, 0);
+        String s = testEmpty1();
+        if(s.equals("")){
+            /* if(comboBox1.getSelectedIndex() == 0) {
+                DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + dateTextField + "', '" + nameText + "', '" + addressTextField
+                        + "', '" + postCodeText + "', '" + telephoneNo + "', '" + emailText + "', 'null' , 'null')");
+                System.out.println("Successfully sent");
+            }
+            else{
+                DatabaseConnection.databaseAffectTemplate("INSERT INTO customermemberlist VALUES ('" + dateTextField + "', '" + nameText + "', '" + addressTextField
+                        + "', '" + postCodeText + "', '" + telephoneNo + "', '" + emailText + "', '" + comboBox1.getSelectedItem() + "', 'null')");
+                System.out.println("Successfully sent");
+            } */
+
+            System.out.println("Date: " + date);
+            String sql = "INSERT INTO customermemberlist VALUES ('" + JobID + "', '" + dateTextField + "', '" + nameText + "', '" + addressTextField
+                    + "', '" + postCodeText + "', '" + telephoneNo + "', '" + emailText;
+            if(comboBox1.getSelectedIndex() == 0) {
+                sql = sql + "', 'null' , 'null')";
+            }
+            else{
+                sql = sql + comboBox1.getSelectedItem() + "', 'null')";
+                System.out.println("Successfully sent");
+            }
+            DatabaseConnection.databaseAffectTemplate(sql);
             System.out.println("Successfully sent");
+        }
+        else{
+            System.out.println(s + " Must not be empty");
         }
     }
     public void createAccountHolder(String date, String name, String address, String postcode, int telephoneNumber, String email,
@@ -116,37 +176,58 @@ public class CreateAlterAccountHolder extends JDialog{
         if(telephoneNo.getText().isEmpty() || (telephoneNo.getText().equals("Telephone No."))){ System.out.println("Telephone No."); return false; }
         if(emailText.getText().isEmpty() || (emailText.getText().equals("Email"))){ System.out.println("Email"); return false; }
 
-        if(comboBox1.getSelectedIndex() == 0){ System.out.println("DiscountPlan"); return false; }
+        //if(comboBox1.getSelectedIndex() == 0){ System.out.println("DiscountPlan"); return false; }
         return true;
+    }
+    public String testEmpty1(){
+        if(dateTextField.getText().isEmpty() || (dateTextField.getText().equals("Date"))){ return "Date"; }
+        if(nameText.getText().isEmpty() || (nameText.getText().equals("Name"))){ return "Name"; }
+        if(addressTextField.getText().isEmpty() || (addressTextField.getText().equals("Address"))){ return "Address"; }
+        if(postCodeText.getText().isEmpty() || (postCodeText.getText().equals("Postcode"))){ return "Postcode"; }
+        if(telephoneNo.getText().isEmpty() || (telephoneNo.getText().equals("Telephone No."))){  return "Telephone No."; }
+        if(emailText.getText().isEmpty() || (emailText.getText().equals("Email"))){ return "Email"; }
+
+        //if(comboBox1.getSelectedIndex() == 0){ System.out.println("DiscountPlan"); return false; }
+        return "";
     }
 
     public void alterAccountHolder(){ // alterButton customer account details
+        update();
         if(customerIDTextField.getText().isEmpty() || (customerIDTextField.getText().equals("CustomerID"))){
             System.out.println("To alter an account requires the customerID box to be filled");
         }
 
-        if(!(dateTextField.getText().isEmpty() || (dateTextField.getText().equals("Date")))){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Date='" + dateTextField + "' WHERE ID='" + customerIDTextField + "'");
-        }
-        if(!(nameText.getText().isEmpty() || (nameText.getText().equals("Name")))){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Name='" + dateTextField + "' WHERE ID='" + customerIDTextField + "'");
-        }
-        if(!(addressTextField.getText().isEmpty() || (addressTextField.getText().equals("Address")))){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Address='" + addressTextField + "' WHERE ID='" + customerIDTextField + "'");
-        }
-        if(!(postCodeText.getText().isEmpty() || (postCodeText.getText().equals("Postcode")))){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Postcode='" + postCodeText + "' WHERE ID='" + customerIDTextField + "'");
-        }
-        if(!(telephoneNo.getText().isEmpty() || (telephoneNo.getText().equals("Telephone No.")))){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET TelephoneNo='" + telephoneNo + "' WHERE ID='" + customerIDTextField + "'");
-        }
-        if(!(emailText.getText().isEmpty() || (emailText.getText().equals("Email")))){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Email='" + emailText + "' WHERE ID='" + customerIDTextField + "'");
-        }
+        String sql = "UPDATE customermemberlist SET Address='" + addressTextField.getText() + "' WHERE ID='" + custID + "'";
+        System.out.println("SQL = " + sql);
 
-        if(comboBox1.getSelectedIndex() != 0){
-            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET discountPlan='" + comboBox1.getSelectedItem() + "' WHERE ID='" + customerIDTextField + "'");
+        if(!(dateTextField.getText().isEmpty() || (dateTextField.getText().equals("Date")))){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Date='" + date + "' WHERE ID='" + custID + "'");
         }
+        System.out.println("1" + nameText);
+        if(!(nameText.getText().isEmpty() || (nameText.getText().equals("Name")))){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Name='" + name + "' WHERE ID='" + custID + "'");
+        }
+        System.out.println("2");
+        if(!(addressTextField.getText().isEmpty() || (addressTextField.getText().equals("Address")))){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Address='" + addressTextField.getText() + "' WHERE ID='" + custID + "'");
+        }
+        System.out.println("3");
+        if(!(postCodeText.getText().isEmpty() || (postCodeText.getText().equals("Postcode")))){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Postcode='" + postCodeText + "' WHERE ID='" + custID + "'");
+        }
+        System.out.println("4");
+        if(!(telephoneNo.getText().isEmpty() || (telephoneNo.getText().equals("Telephone No.")))){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET TelephoneNo='" + telephoneNo + "' WHERE ID='" + custID + "'");
+        }
+        System.out.println("5");
+        if(!(emailText.getText().isEmpty() || (emailText.getText().equals("Email")))){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Email='" + emailText + "' WHERE ID='" + custID + "'");
+        }
+        System.out.println("6");
+        if(comboBox1.getSelectedIndex() != 0){
+            DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET discountPlan='" + comboBox1.getSelectedItem() + "' WHERE ID='" + custID + "'");
+        }
+        System.out.println("7");
     }
 
     public static void main(String[] args) {

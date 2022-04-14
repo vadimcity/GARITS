@@ -22,6 +22,7 @@ public class FranchiseePanel extends JDialog{
     private JButton backButton;
     private JRadioButton payLate;
     private JScrollPane jsp;
+    private JButton deleteSelected;
 
     public FranchiseePanel() {
         Main.updateMain("FranchiseePanel");
@@ -32,7 +33,7 @@ public class FranchiseePanel extends JDialog{
         setContentPane(franchiseePanel);
         setMinimumSize(new Dimension(950, 300));
         setModal(true);
-        displayTable("SELECT * FROM customermemberlist");
+        defaultTable();
 //        setLocationRelativeTo(parent);
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -68,6 +69,12 @@ public class FranchiseePanel extends JDialog{
                 apply();
             }
         });
+        deleteSelected.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                delete();
+            }
+        });
 
         setVisible(true);
     }
@@ -90,6 +97,7 @@ public class FranchiseePanel extends JDialog{
         DatabaseConnection.databaseAffectTemplate("UPDATE customermemberlist SET Discountplan='" + plo + "' WHERE ID='" + customerIDTextField + "'");
     }
 
+    public void defaultTable() { displayTable("SELECT * FROM customermemberlist"); }
     public void displayTable(String sql){
 
         String[][] s = DatabaseConnection.databaseReturnTable(sql);
@@ -98,6 +106,11 @@ public class FranchiseePanel extends JDialog{
         String[][] data = Main.convertToPureData(s);
 
         table1.setModel(new DefaultTableModel(data, columns));
+    }
+
+    public void delete(){
+        DatabaseConnection.databaseAffectTemplate("DELETE FROM customermemberlist WHERE ID='" + table1.getValueAt(table1.getSelectedRow(), 0) + "'");
+        defaultTable();
     }
 
     public static void main(String[] args) {
