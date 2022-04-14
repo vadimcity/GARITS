@@ -30,7 +30,7 @@ public class FranchiseePanel extends JDialog{
 //        super(parent);
         setTitle("FranchiseePanel");
         setContentPane(franchiseePanel);
-        setMinimumSize(new Dimension(650, 300));
+        setMinimumSize(new Dimension(950, 300));
         setModal(true);
         displayTable("SELECT * FROM customermemberlist");
 //        setLocationRelativeTo(parent);

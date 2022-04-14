@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class CarPanel extends JDialog{
     private JButton backButton;
     private JButton logOutButton;
-    private JTextField carIDTextFieldTextField;
+    private JTextField carIDTextField;
     private JButton removeCarButton;
     private JButton editCarButton;
     private JTextField registerNoTextField;
@@ -39,7 +39,7 @@ public class CarPanel extends JDialog{
         removeCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                removeCar(carIDTextFieldTextField.getText());
+                removeCar(carIDTextField.getText());
             }
         });
         addCarButton.addActionListener(new ActionListener() {
@@ -51,7 +51,7 @@ public class CarPanel extends JDialog{
         editCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                editCar(carIDTextFieldTextField.getText(),registerNoTextField.getText(),makeTextField.getText(),modelTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),colourTextField.getText(),yearTextField.getText(),customerIDTextField.getText());
+                editCar(carIDTextField.getText(),registerNoTextField.getText(),makeTextField.getText(),modelTextField.getText(),engineTextField.getText(),chassisNoTextField.getText(),colourTextField.getText(),yearTextField.getText(),customerIDTextField.getText());
             }
         });
         backButton.addActionListener(new ActionListener() {
