@@ -34,11 +34,15 @@ public class SearchJob extends JDialog{
         setMinimumSize(new Dimension(1290, 300));
         setModal(true);
 //        setLocationRelativeTo(parent);
-        displayTable("SELECT * FROM joblist WHERE jobstatus='active'");
+        //displayTable("SELECT * FROM joblist WHERE jobstatus='active'");
+        //displayTable("SELECT * FROM joblist");
+        displayTable("SELECT * FROM useraccounts");
+        //displayTable("SELECT * FROM testing");
         searchJobButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchingJob();
+                //searchingJob();
+                temp();
                 //test();
             }
         });
@@ -97,17 +101,12 @@ public class SearchJob extends JDialog{
     public String searchingJobCustomerMechanic(){ return ""; }
     public String searchingJobCarCustomerMechanic(){ return ""; } //String sql = SELECT * FROM Joblist WHERE active=true, carID=x, customerID=y, mechanic=z;
 
+    public void temp(){
+        displayTable("SELECT username, firstname FROM useraccounts");
+    }
+
     public void displayTable(String sql){
-        //String[][] s = DatabaseConnection.databaseReturnTable(sql);
-        String[][] s =
-                {{"Name", "Age", "Sex"},
-                        {"Daisy", "19", "Female"},
-                        {"Jim", "20", "Male"},
-                        {"Johann", "21", "Male"},
-                        {"Johanna", "30", "FeMale"},
-                        {"Tabatha", "16", "FeMale"},
-                        {"Mary", "62", "FeMale"},
-                        {"Anton", "93", "Male"}};
+        String[][] s = DatabaseConnection.databaseReturnTable(sql);
 
         String[] columns = Main.convertToColumns(s);
         String[][] data = Main.convertToPureData(s);

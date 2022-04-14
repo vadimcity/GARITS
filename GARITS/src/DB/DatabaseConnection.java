@@ -183,9 +183,6 @@ public class DatabaseConnection {
     } */
 
     public static String[][] databaseReturnTable(String sql) {
-        System.out.println("Hello?");
-        //String example = "SELECT username, firstname FROM useraccounts";
-        String s = "";
         int rows;
         String[][] stringarray;
 
@@ -199,28 +196,32 @@ public class DatabaseConnection {
             //find number of rows,      columns = rsmd.getColumnCount()
             rs.last();
             rows = rs.getRow();
-            rs.beforeFirst();
+            //rs.beforeFirst();
+            rs.first();
 
+            //get No. of Columns
             stringarray = new String[rows+1][rsmd.getColumnCount()];
-
-            System.out.println("Columncount = " + rsmd.getColumnCount());
-
-            for(int i = 0; i<=rsmd.getColumnCount();i++){
-                stringarray[0][i] = rsmd.getColumnName(i);
+            //get columns
+            for(int i = 0; i<rsmd.getColumnCount();i++){
+                stringarray[0][i] = rsmd.getColumnName(i+1);
                 rs.getRow();
-                System.out.println("i = " + i);
             }
+
+            //get data
             for(int i = 1; i< (rows + 1);i++){
-                for(int j = 0; j<rsmd.getColumnCount();j++) {
-                    stringarray[i][j] = rs.getString(rsmd.getColumnName(j));
-                }
+                for(int j = 0; j<rsmd.getColumnCount();j++) {  stringarray[i][j] = rs.getString(j+1);  }
                 rs.next();
             }
+
+            //Correct the nulls
+            for(int i = 0; i < stringarray.length; i++){
+                for(int j = 0; j < stringarray[0].length; j++) {if(stringarray[i][j] == null){ stringarray[i][j] = "NULL"; }}
+            }
+
             return stringarray;
+
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
             stringarray = new String[0][0];
             System.out.println("databaseReturnTable: Failure");
             return stringarray;

@@ -31,10 +31,7 @@ public class Main {
     public static String[][] convertToPureData(String[][] s){
         String[][] data = new String[s.length-1][s[0].length];
         for (int i = 1; i < s.length; i++){
-            for (int j = 0; j < s[0].length; j++){
-                data[i-1][j] = s[i][j];
-                System.out.println(data[i-1][j]);
-            }
+            for (int j = 0; j < s[0].length; j++){  data[i-1][j] = s[i][j];  }
         }
         return data;
     }
