@@ -82,3 +82,16 @@ public class PendingJobPanel extends JDialog{
         PendingJobPanel mypjp = new PendingJobPanel();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
